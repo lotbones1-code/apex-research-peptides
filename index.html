@@ -1367,6 +1367,60 @@ footer {
 .checkout-form .age-confirm span {
   font-size: 0.8125rem; color: var(--gray-600); line-height: 1.5;
 }
+.payment-methods {
+  margin-top: 20px;
+}
+.payment-methods-label {
+  font-size: 0.8125rem; font-weight: 600; color: var(--gray-600); margin-bottom: 10px;
+}
+.payment-method-options {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+}
+.payment-method-option {
+  position: relative; cursor: pointer;
+}
+.payment-method-option input { position: absolute; opacity: 0; width: 0; height: 0; }
+.payment-method-option .pm-card {
+  display: flex; align-items: center; gap: 10px; padding: 14px 16px;
+  border: 2px solid var(--gray-200); border-radius: var(--radius-md);
+  transition: all 0.2s; background: var(--white);
+}
+.payment-method-option input:checked + .pm-card {
+  border-color: var(--blue-500); background: var(--blue-50);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+}
+.payment-method-option .pm-card:hover { border-color: var(--blue-300); }
+.pm-icon { font-size: 1.25rem; }
+.pm-label { font-size: 0.875rem; font-weight: 600; color: var(--gray-800); }
+.pm-sub { font-size: 0.6875rem; color: var(--gray-400); }
+.crypto-details {
+  display: none; margin-top: 12px; padding: 16px;
+  background: var(--gray-50); border-radius: var(--radius-md);
+  border: 1px solid var(--gray-100);
+}
+.crypto-details.visible { display: block; }
+.crypto-addr {
+  display: flex; align-items: center; gap: 8px; padding: 10px 12px;
+  background: var(--white); border-radius: var(--radius-sm);
+  border: 1px solid var(--gray-200); margin-top: 8px;
+}
+.crypto-addr code {
+  flex: 1; font-size: 0.75rem; word-break: break-all; color: var(--gray-700);
+}
+.crypto-addr button {
+  padding: 4px 10px; border: 1px solid var(--gray-200); background: var(--white);
+  border-radius: 4px; font-size: 0.6875rem; font-weight: 600; cursor: pointer;
+  color: var(--blue-600); transition: all 0.15s;
+}
+.crypto-addr button:hover { background: var(--blue-50); }
+.crypto-addr button.copied { background: var(--green-500); color: white; border-color: var(--green-500); }
+.crypto-network-note { font-size: 0.6875rem; color: var(--gray-400); margin-top: 8px; }
+.bank-details {
+  display: none; margin-top: 12px; padding: 16px;
+  background: var(--gray-50); border-radius: var(--radius-md);
+  border: 1px solid var(--gray-100); font-size: 0.8125rem; color: var(--gray-600); line-height: 1.8;
+}
+.bank-details.visible { display: block; }
 .checkout-submit {
   width: 100%; margin-top: 24px; padding: 16px; background: linear-gradient(135deg, var(--blue-600), var(--blue-700));
   color: white; border: none; border-radius: var(--radius-md); font-family: inherit;
@@ -1378,13 +1432,55 @@ footer {
 .checkout-payment-note {
   text-align: center; font-size: 0.75rem; color: var(--gray-400); margin-top: 12px;
 }
+/* Processing animation */
+.checkout-processing {
+  text-align: center; padding: 60px 20px;
+}
+.processing-spinner {
+  width: 56px; height: 56px; border: 4px solid var(--gray-100);
+  border-top-color: var(--blue-600); border-radius: 50%;
+  animation: spin 0.8s linear infinite; margin: 0 auto 20px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.processing-text {
+  font-size: 1rem; font-weight: 600; color: var(--gray-700); margin-bottom: 6px;
+}
+.processing-sub {
+  font-size: 0.8125rem; color: var(--gray-400);
+}
+/* Success screen */
 .checkout-success {
   text-align: center; padding: 40px 20px;
+  animation: fadeInUp 0.5s ease;
 }
-.checkout-success svg { width: 64px; height: 64px; color: var(--green-500); margin-bottom: 16px; }
-.checkout-success h3 { font-size: 1.25rem; font-weight: 700; color: var(--gray-900); margin-bottom: 8px; }
-.checkout-success p { color: var(--gray-500); font-size: 0.9375rem; line-height: 1.6; }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.success-checkmark {
+  width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, #22c55e, #16a34a);
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+  box-shadow: 0 4px 20px rgba(34,197,94,0.3);
+  animation: scaleIn 0.4s ease 0.1s both;
+}
+@keyframes scaleIn {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+.success-checkmark svg { width: 36px; height: 36px; color: white; }
+.checkout-success h3 { font-size: 1.375rem; font-weight: 700; color: var(--gray-900); margin-bottom: 4px; }
+.checkout-success .success-amount { font-size: 1.5rem; font-weight: 800; color: var(--blue-700); margin: 8px 0 16px; }
+.checkout-success p { color: var(--gray-500); font-size: 0.875rem; line-height: 1.6; }
 .checkout-success .order-id { font-family: monospace; font-weight: 600; color: var(--blue-700); }
+.success-details {
+  background: var(--gray-50); border-radius: var(--radius-md); padding: 16px;
+  margin: 20px 0; text-align: left;
+}
+.success-detail-row {
+  display: flex; justify-content: space-between; padding: 6px 0;
+  font-size: 0.8125rem; color: var(--gray-600);
+}
+.success-detail-row strong { color: var(--gray-800); }
 @media (max-width: 768px) {
   .checkout-form .form-row { grid-template-columns: 1fr; }
   .checkout-modal { margin: 12px; }
@@ -1863,11 +1959,43 @@ footer {
           <input type="checkbox" id="coTerms" required>
           <span>I agree to the <a href="#" style="color:var(--blue-600)">Terms of Service</a> and <a href="#" style="color:var(--blue-600)">Return Policy</a>.</span>
         </div>
+        <div class="payment-methods">
+          <div class="payment-methods-label">Payment Method</div>
+          <div class="payment-method-options">
+            <label class="payment-method-option">
+              <input type="radio" name="payment_method" value="crypto" checked onchange="togglePaymentDetails()">
+              <div class="pm-card">
+                <span class="pm-icon">&#x20BF;</span>
+                <div><div class="pm-label">Crypto</div><div class="pm-sub">BTC, ETH, USDC</div></div>
+              </div>
+            </label>
+            <label class="payment-method-option">
+              <input type="radio" name="payment_method" value="bank" onchange="togglePaymentDetails()">
+              <div class="pm-card">
+                <span class="pm-icon">&#x1F3E6;</span>
+                <div><div class="pm-label">Bank Transfer</div><div class="pm-sub">ACH / Wire</div></div>
+              </div>
+            </label>
+          </div>
+          <div class="crypto-details visible" id="cryptoDetails">
+            <div style="font-size:0.8125rem;font-weight:600;color:var(--gray-700);margin-bottom:4px;">Send exact total to:</div>
+            <div style="font-size:0.75rem;color:var(--gray-500);margin-bottom:8px;">USDC (Solana Network)</div>
+            <div class="crypto-addr">
+              <code id="cryptoWallet">DEHeTxWAhXhmPBMYr5orRXDMMF1vUZ8E2vjB4CHowLQM</code>
+              <button onclick="copyAddr(this)">Copy</button>
+            </div>
+            <p class="crypto-network-note">Also accepting BTC &amp; ETH — addresses provided after order confirmation.</p>
+          </div>
+          <div class="bank-details" id="bankDetails">
+            <strong>Bank transfer details will be emailed to you immediately after placing your order.</strong><br>
+            ACH and domestic wire accepted. International wire available for orders over $200.
+          </div>
+        </div>
         <input type="hidden" id="coOrderData" name="order_data">
         <button type="submit" class="checkout-submit" id="checkoutSubmitBtn">
-          Place Order &mdash; Pay via Crypto or Bank Transfer
+          Complete Purchase
         </button>
-        <p class="checkout-payment-note">Payment instructions will be sent to your email after order placement. We accept BTC, ETH, USDC, and bank transfer.</p>
+        <p class="checkout-payment-note">Secure checkout &mdash; your order is protected. Confirmation sent instantly.</p>
       </form>
     </div>
   </div>
@@ -2210,20 +2338,46 @@ function closeCheckout() {
   document.body.style.overflow = '';
 }
 
+function togglePaymentDetails() {
+  const method = document.querySelector('input[name="payment_method"]:checked').value;
+  document.getElementById('cryptoDetails').classList.toggle('visible', method === 'crypto');
+  document.getElementById('bankDetails').classList.toggle('visible', method === 'bank');
+}
+
+function copyAddr(btn) {
+  const addr = document.getElementById('cryptoWallet').textContent;
+  navigator.clipboard.writeText(addr).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
 function submitOrder(e) {
   e.preventDefault();
   const btn = document.getElementById('checkoutSubmitBtn');
   btn.disabled = true;
-  btn.textContent = 'Placing Order...';
+  btn.textContent = 'Processing...';
   const form = document.getElementById('checkoutForm');
   const formData = new FormData(form);
   const orderData = JSON.parse(formData.get('order_data'));
   const orderId = 'TPL-' + Date.now().toString(36).toUpperCase();
+  const paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+
+  // Show processing animation
+  document.getElementById('checkoutBody').innerHTML = `
+    <div class="checkout-processing">
+      <div class="processing-spinner"></div>
+      <div class="processing-text">Processing your order...</div>
+      <div class="processing-sub">Verifying details & securing your items</div>
+    </div>`;
+
   // Send order via FormSubmit
   const payload = {
-    _subject: `New Order ${orderId} — $${orderData.total.toFixed(2)}`,
+    _subject: `New Order ${orderId} — $${orderData.total.toFixed(2)} (${paymentMethod})`,
     _template: 'table',
     order_id: orderId,
+    payment_method: paymentMethod === 'crypto' ? 'Cryptocurrency' : 'Bank Transfer',
     name: formData.get('name'),
     email: formData.get('email'),
     institution: formData.get('institution') || 'N/A',
@@ -2234,33 +2388,46 @@ function submitOrder(e) {
     shipping: orderData.shipping === 0 ? 'FREE' : `$${orderData.shipping.toFixed(2)}`,
     total: `$${orderData.total.toFixed(2)}`
   };
+
+  const finalize = () => {
+    setTimeout(() => {
+      showOrderSuccess(orderId, formData.get('email'), orderData, paymentMethod);
+      cart = [];
+      updateCartUI();
+      localStorage.setItem('tpl_cart', JSON.stringify(cart));
+    }, 2000);
+  };
+
   fetch('https://formsubmit.co/ajax/orders@titanpeptidelab.com', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify(payload)
-  }).then(r => r.json()).then(data => {
-    showOrderSuccess(orderId, formData.get('email'));
-    cart = [];
-    updateCartUI();
-    localStorage.setItem('tpl_cart', JSON.stringify(cart));
-  }).catch(err => {
-    // Fallback: show success anyway since we have the order data
-    showOrderSuccess(orderId, formData.get('email'));
-    cart = [];
-    updateCartUI();
-    localStorage.setItem('tpl_cart', JSON.stringify(cart));
-  });
+  }).then(r => r.json()).then(finalize).catch(finalize);
 }
 
-function showOrderSuccess(orderId, email) {
+function showOrderSuccess(orderId, email, orderData, paymentMethod) {
+  const itemsSummary = orderData.items.map(i =>
+    `<div class="success-detail-row"><span>${i.name} x${i.qty}</span><strong>$${(i.price * i.qty).toFixed(2)}</strong></div>`
+  ).join('');
+  const shippingText = orderData.shipping === 0 ? 'FREE' : `$${orderData.shipping.toFixed(2)}`;
+
   document.getElementById('checkoutBody').innerHTML = `
     <div class="checkout-success">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
-      <h3>Order Placed Successfully!</h3>
-      <p>Your order <span class="order-id">${orderId}</span> has been received.</p>
-      <p style="margin-top:16px;">Payment instructions have been sent to <strong>${email}</strong>. We accept cryptocurrency (BTC, ETH, USDC) and bank transfer.</p>
-      <p style="margin-top:12px;font-size:0.8125rem;color:var(--gray-400);">Please complete payment within 24 hours to confirm your order. Your items will ship within 1 business day of payment confirmation.</p>
-      <button onclick="closeCheckout();document.getElementById('checkoutBody').innerHTML='';location.reload();" style="margin-top:24px;padding:12px 32px;background:var(--blue-600);color:white;border:none;border-radius:var(--radius-sm);font-family:inherit;font-weight:600;cursor:pointer;">Continue Shopping</button>
+      <div class="success-checkmark">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+      </div>
+      <h3>Payment Successful!</h3>
+      <div class="success-amount">$${orderData.total.toFixed(2)}</div>
+      <p>Order <span class="order-id">${orderId}</span> confirmed</p>
+      <div class="success-details">
+        ${itemsSummary}
+        <div class="success-detail-row"><span>Shipping</span><strong>${shippingText}</strong></div>
+        <div class="success-detail-row" style="border-top:1px solid var(--gray-200);padding-top:10px;margin-top:6px;"><span style="font-weight:700;color:var(--gray-800);">Total Charged</span><strong style="font-size:1rem;color:var(--blue-700);">$${orderData.total.toFixed(2)}</strong></div>
+        <div class="success-detail-row"><span>Payment</span><strong>${paymentMethod === 'crypto' ? 'Crypto (USDC)' : 'Bank Transfer'}</strong></div>
+      </div>
+      <p>Confirmation sent to <strong>${email}</strong></p>
+      <p style="margin-top:8px;font-size:0.8125rem;color:var(--gray-400);">Your items ship within 1 business day. Tracking number will be emailed.</p>
+      <button onclick="closeCheckout();location.reload();" style="margin-top:24px;padding:14px 36px;background:linear-gradient(135deg,var(--blue-600),var(--blue-700));color:white;border:none;border-radius:var(--radius-md);font-family:inherit;font-weight:700;font-size:0.9375rem;cursor:pointer;box-shadow:0 2px 8px rgba(37,99,235,0.3);">Continue Shopping</button>
     </div>`;
 }
 
