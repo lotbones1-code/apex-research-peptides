@@ -2121,6 +2121,27 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartUI();
   initScrollAnimations();
   initHeaderScroll();
+  // Check for payment return from NOWPayments
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('payment') === 'success') {
+    const oid = params.get('order') || 'TPL-CONFIRMED';
+    setTimeout(() => {
+      const overlay = document.getElementById('checkoutOverlay');
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('checkoutBody').innerHTML = `
+        <div class="checkout-success">
+          <div class="success-checkmark">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+          </div>
+          <h3>Payment Successful!</h3>
+          <p>Order <span class="order-id">${oid}</span> confirmed</p>
+          <p style="margin-top:12px;color:var(--gray-500);font-size:0.875rem;">Your payment has been received. Items ship within 1 business day.</p>
+          <button onclick="closeCheckout();history.replaceState(null,'','/');location.reload();" style="margin-top:24px;padding:14px 36px;background:linear-gradient(135deg,var(--blue-600),var(--blue-700));color:white;border:none;border-radius:var(--radius-md);font-family:inherit;font-weight:700;font-size:0.9375rem;cursor:pointer;box-shadow:0 2px 8px rgba(37,99,235,0.3);">Continue Shopping</button>
+        </div>`;
+    }, 300);
+    window.history.replaceState(null, '', '/');
+  }
 });
 
 // ── Render Product Grid ──
@@ -2369,11 +2390,10 @@ function submitOrder(e) {
     <div class="checkout-processing">
       <div class="processing-spinner"></div>
       <div class="processing-text">Processing your order...</div>
-      <div class="processing-sub">Verifying details & securing your items</div>
+      <div class="processing-sub">Creating secure payment invoice...</div>
     </div>`;
 
-  // Send order via FormSubmit
-  const payload = {
+  const emailPayload = {
     _subject: `New Order ${orderId} — $${orderData.total.toFixed(2)} (${paymentMethod})`,
     _template: 'table',
     order_id: orderId,
@@ -2389,20 +2409,69 @@ function submitOrder(e) {
     total: `$${orderData.total.toFixed(2)}`
   };
 
-  const finalize = () => {
+  // Send order notification email
+  fetch('https://formsubmit.co/ajax/orders@titanpeptidelab.com', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(emailPayload)
+  }).catch(() => {});
+
+  if (paymentMethod === 'crypto') {
+    // Create NOWPayments invoice for real crypto payment
+    fetch('https://api.nowpayments.io/v1/invoice', {
+      method: 'POST',
+      headers: {
+        'x-api-key': 'N7VC3SS-G0NM381-J8YD1RN-5S71TR9',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        price_amount: orderData.total,
+        price_currency: 'usd',
+        order_id: orderId,
+        order_description: orderData.items.map(i => `${i.name} x${i.qty}`).join(', '),
+        ipn_callback_url: 'https://www.titanpeptidelab.com/',
+        success_url: 'https://www.titanpeptidelab.com/?payment=success&order=' + orderId,
+        cancel_url: 'https://www.titanpeptidelab.com/?payment=cancel'
+      })
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.invoice_url) {
+        // Show payment page in iframe or redirect
+        document.getElementById('checkoutBody').innerHTML = `
+          <div style="text-align:center;padding:16px;">
+            <h3 style="font-size:1.125rem;font-weight:700;color:var(--gray-900);margin-bottom:8px;">Complete Payment</h3>
+            <p style="font-size:0.8125rem;color:var(--gray-500);margin-bottom:16px;">Order ${orderId} — $${orderData.total.toFixed(2)}</p>
+            <iframe src="${data.invoice_url}" style="width:100%;height:500px;border:none;border-radius:var(--radius-md);"></iframe>
+            <p style="font-size:0.75rem;color:var(--gray-400);margin-top:12px;">Powered by NOWPayments. Pay with BTC, ETH, USDC, or 300+ cryptocurrencies.</p>
+          </div>`;
+        cart = [];
+        updateCartUI();
+        localStorage.setItem('tpl_cart', JSON.stringify(cart));
+      } else {
+        // Fallback to manual crypto payment
+        showOrderSuccess(orderId, formData.get('email'), orderData, paymentMethod);
+        cart = [];
+        updateCartUI();
+        localStorage.setItem('tpl_cart', JSON.stringify(cart));
+      }
+    })
+    .catch(() => {
+      // Fallback
+      showOrderSuccess(orderId, formData.get('email'), orderData, paymentMethod);
+      cart = [];
+      updateCartUI();
+      localStorage.setItem('tpl_cart', JSON.stringify(cart));
+    });
+  } else {
+    // Bank transfer — show success after delay
     setTimeout(() => {
       showOrderSuccess(orderId, formData.get('email'), orderData, paymentMethod);
       cart = [];
       updateCartUI();
       localStorage.setItem('tpl_cart', JSON.stringify(cart));
     }, 2000);
-  };
-
-  fetch('https://formsubmit.co/ajax/orders@titanpeptidelab.com', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify(payload)
-  }).then(r => r.json()).then(finalize).catch(finalize);
+  }
 }
 
 function showOrderSuccess(orderId, email, orderData, paymentMethod) {
