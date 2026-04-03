@@ -1374,6 +1374,7 @@ footer {
 
   .modal { max-height: 90vh; }
   .modal-body .modal-specs { grid-template-columns: 1fr; }
+  .getting-started-grid { grid-template-columns: 1fr !important; }
 }
 
 @media (max-width: 480px) {
@@ -1382,6 +1383,7 @@ footer {
   .hero-stat-value { font-size: 1.35rem; }
   .product-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
   .add-to-cart-btn { width: 100%; justify-content: center; }
+  .getting-started-grid { gap: 16px !important; }
 }
 
 /* ── Checkout Modal ── */
@@ -2014,6 +2016,15 @@ footer {
           <div class="hero-stat-label">Research Labs</div>
         </div>
       </div>
+      <div style="background:linear-gradient(135deg,#0f172a,#1e293b);border-radius:12px;padding:24px 32px;margin:40px auto 0;max-width:700px;display:flex;align-items:center;gap:20px;color:white">
+        <div style="width:48px;height:48px;background:rgba(6,182,212,0.2);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="24" height="24" fill="none" stroke="#06b6d4" stroke-width="2" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div>
+          <div style="font-weight:700;font-size:0.9375rem;margin-bottom:4px">Free Instructional Video with Every Order</div>
+          <div style="font-size:0.8125rem;color:rgba(255,255,255,0.7)">Every purchase includes a complimentary video guide covering proper handling, reconstitution, storage, and research protocol setup.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2405,6 +2416,32 @@ footer {
 </div>
 </section>
 
+<!-- New to Research Peptides -->
+<section style="background:var(--white);padding:60px 0;border-top:1px solid var(--gray-100)" id="getting-started">
+<div class="container-narrow" style="text-align:center">
+  <span class="section-label">Getting Started</span>
+  <h2 class="section-title">New to Research Peptides?</h2>
+  <p class="section-desc" style="margin:0 auto 32px">Everything you need to get started with confidence.</p>
+  <div class="getting-started-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:left">
+    <div style="background:var(--gray-50);border-radius:10px;padding:24px">
+      <div style="font-size:1.5rem;margin-bottom:12px">1</div>
+      <div style="font-weight:700;color:var(--gray-900);margin-bottom:6px">Choose Your Products</div>
+      <div style="font-size:0.8125rem;color:var(--gray-500);line-height:1.7">Browse our catalog. Each product includes purity specs, molecular data, and a Certificate of Analysis.</div>
+    </div>
+    <div style="background:var(--gray-50);border-radius:10px;padding:24px">
+      <div style="font-size:1.5rem;margin-bottom:12px">2</div>
+      <div style="font-weight:700;color:var(--gray-900);margin-bottom:6px">Checkout Securely</div>
+      <div style="font-size:0.8125rem;color:var(--gray-500);line-height:1.7">Pay with crypto (300+ coins) or bank transfer. All transactions are encrypted and your data is never stored.</div>
+    </div>
+    <div style="background:var(--gray-50);border-radius:10px;padding:24px">
+      <div style="font-size:1.5rem;margin-bottom:12px">3</div>
+      <div style="font-weight:700;color:var(--gray-900);margin-bottom:6px">Receive & Research</div>
+      <div style="font-size:0.8125rem;color:var(--gray-500);line-height:1.7">Orders ship within 24 hours with tracking. Every order includes COA documentation and a free instructional video.</div>
+    </div>
+  </div>
+</div>
+</section>
+
 <!-- FAQ -->
 <section class="faq-section" id="faq">
   <div class="container">
@@ -2792,7 +2829,7 @@ footer {
         </div>
         <div class="age-confirm">
           <input type="checkbox" id="coTerms" required>
-          <span>I agree to the <a href="#" style="color:var(--blue-600)">Terms of Service</a> and <a href="#" style="color:var(--blue-600)">Return Policy</a>.</span>
+          <span>I agree to the <a href="#" onclick="openPolicy('terms');return false;" style="color:var(--blue-600)">Terms of Service</a> and <a href="#" onclick="openPolicy('returns');return false;" style="color:var(--blue-600)">Return Policy</a>.</span>
         </div>
         <div class="payment-methods">
           <div class="payment-methods-label">Payment Method</div>
@@ -2813,6 +2850,14 @@ footer {
             </label>
           </div>
           <div class="crypto-details visible" id="cryptoDetails">
+            <div style="background:var(--blue-50);border:1px solid var(--blue-200);border-radius:8px;padding:16px;margin-bottom:16px;font-size:0.8125rem;color:var(--gray-700);line-height:1.7">
+              <div style="font-weight:700;color:var(--gray-900);margin-bottom:8px">How to Pay with Crypto (3 Easy Steps):</div>
+              <div>1. Copy the wallet address below</div>
+              <div>2. Open your crypto wallet app (Coinbase, MetaMask, Phantom, Trust Wallet, etc.)</div>
+              <div>3. Send the exact order total in USDC on Solana network to the address</div>
+              <div style="margin-top:8px;font-size:0.75rem;color:var(--gray-500)">Your order ships within 24 hours of payment confirmation. You'll receive an email with tracking info.</div>
+              <div style="margin-top:4px;font-size:0.75rem;color:var(--gray-500)">Don't have crypto? Select "Bank Transfer" and we'll email you wire instructions.</div>
+            </div>
             <div style="font-size:0.8125rem;font-weight:600;color:var(--gray-700);margin-bottom:4px;">Send exact total to:</div>
             <div style="font-size:0.75rem;color:var(--gray-500);margin-bottom:8px;">USDC (Solana Network)</div>
             <div class="crypto-addr">
@@ -2828,6 +2873,7 @@ footer {
         </div>
         <input type="hidden" id="coOrderData" name="order_data">
         <button type="submit" class="checkout-submit" id="checkoutSubmitBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="18" height="18" style="vertical-align:middle;margin-right:6px;margin-top:-2px"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
           Complete Purchase
         </button>
         <p class="checkout-payment-note">Secure checkout &mdash; your order is protected. Confirmation sent instantly.</p>
@@ -3646,6 +3692,23 @@ function openModal(productId) {
       <div class="modal-spec-value">${value}</div>
     </div>
   `).join('');
+
+  // Add Research Protocol Notes
+  let protocolEl = document.getElementById('modalProtocol');
+  if (!protocolEl) {
+    protocolEl = document.createElement('div');
+    protocolEl.id = 'modalProtocol';
+    specsEl.parentNode.insertBefore(protocolEl, specsEl.nextSibling);
+  }
+  const protocolNotes = product.id && product.id.includes('nasal') ?
+    '\u2022 Ready to use \u2014 no reconstitution needed<br>\u2022 Each actuation delivers a precise 200mcg dose<br>\u2022 Store at room temperature, away from direct light<br>\u2022 ~125 sprays per bottle' :
+    product.id === 'mk677' ?
+    '\u2022 Liquid form \u2014 measure with included dropper<br>\u2022 Store at room temperature away from light<br>\u2022 Shake gently before each use' :
+    '\u2022 Reconstitute with bacteriostatic water (BAC water)<br>\u2022 Use insulin syringes for precise measurement<br>\u2022 Store reconstituted peptides at 2-8\u00B0C<br>\u2022 Use within 30 days of reconstitution<br>\u2022 Free instructional video included with purchase';
+  protocolEl.innerHTML = `<div style="background:var(--gray-50);border-radius:8px;padding:16px;margin-top:16px;margin-bottom:20px">
+    <div style="font-weight:700;font-size:0.875rem;color:var(--gray-800);margin-bottom:8px">Research Protocol Notes</div>
+    <div style="font-size:0.8125rem;color:var(--gray-600);line-height:1.7">${protocolNotes}</div>
+  </div>`;
 
   const modal = document.getElementById('productModal');
   modal.classList.add('active');
