@@ -3464,8 +3464,13 @@ function checkout() {
   // Build order summary in checkout modal
   const itemsEl = document.getElementById('checkoutItems');
   let subtotal = 0;
+  // Remove stale cart items that no longer match any product
+  cart = cart.filter(item => products.some(p => p.id === item.id));
+  localStorage.setItem('apexCart', JSON.stringify(cart));
+  if (cart.length === 0) { updateCartUI(); return; }
   itemsEl.innerHTML = cart.map(item => {
     const product = products.find(p => p.id === item.id);
+    if (!product) return '';
     const lineTotal = product.price * item.qty;
     subtotal += lineTotal;
     return `<div class="checkout-summary-item">
@@ -3482,7 +3487,7 @@ function checkout() {
   document.getElementById('checkoutTotal').textContent = `$${(subtotal + shipping).toFixed(2)}`;
   // Store order data for form submission
   document.getElementById('coOrderData').value = JSON.stringify({
-    items: cart.map(item => {
+    items: cart.filter(item => products.some(p => p.id === item.id)).map(item => {
       const p = products.find(pr => pr.id === item.id);
       return { name: p.name, dosage: p.dosage, qty: item.qty, price: p.price };
     }),
