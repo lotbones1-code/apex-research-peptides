@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="iconBondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect width="400" height="400" rx="64" fill="url(#bgGrad)"/>
+
+  <!-- Molecular mark centered — peptide backbone motif -->
+  <g transform="translate(200, 200)">
+    <!-- Central node (alpha carbon) -->
+    <circle cx="0" cy="0" r="28" fill="url(#iconBondGrad)"/>
+
+    <!-- Left bond + node -->
+    <rect x="-90" y="-7" width="56" height="14" rx="7" fill="rgba(255,255,255,0.25)"/>
+    <circle cx="-100" cy="0" r="22" fill="rgba(255,255,255,0.15)"/>
+
+    <!-- Right bond + node -->
+    <rect x="34" y="-7" width="56" height="14" rx="7" fill="rgba(255,255,255,0.25)"/>
+    <circle cx="100" cy="0" r="22" fill="rgba(255,255,255,0.15)"/>
+
+    <!-- Top branch (side chain) -->
+    <rect x="-7" y="-100" width="14" height="62" rx="7" fill="url(#iconBondGrad)" opacity="0.8"/>
+    <circle cx="0" cy="-110" r="18" fill="url(#iconBondGrad)"/>
+
+    <!-- Bottom branch -->
+    <rect x="-7" y="38" width="14" height="40" rx="7" fill="rgba(255,255,255,0.12)"/>
+    <circle cx="0" cy="88" r="14" fill="rgba(255,255,255,0.1)"/>
+
+    <!-- Letter T overlaid on central node -->
+    <text x="0" y="12" font-family="Inter, -apple-system, Helvetica Neue, Arial, sans-serif" font-weight="800" font-size="36" fill="#0f172a" text-anchor="middle">T</text>
+  </g>
+</svg>
