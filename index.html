@@ -2831,6 +2831,14 @@ footer {
           <input type="checkbox" id="coTerms" required>
           <span>I agree to the <a href="#" onclick="openPolicy('terms');return false;" style="color:var(--blue-600)">Terms of Service</a> and <a href="#" onclick="openPolicy('returns');return false;" style="color:var(--blue-600)">Return Policy</a>.</span>
         </div>
+        <div style="margin-bottom:16px">
+          <label for="coDiscount" style="font-size:0.8125rem;font-weight:600;color:var(--gray-700)">Discount Code</label>
+          <div style="display:flex;gap:8px;margin-top:4px">
+            <input type="text" id="coDiscount" placeholder="Enter code" style="flex:1;padding:12px 14px;border:1px solid var(--gray-200);border-radius:8px;font-family:inherit;font-size:0.875rem">
+            <button type="button" onclick="applyDiscount()" style="padding:12px 20px;background:var(--gray-900);color:white;border:none;border-radius:8px;font-family:inherit;font-size:0.8125rem;font-weight:600;cursor:pointer">Apply</button>
+          </div>
+          <div id="discountMsg" style="font-size:0.75rem;margin-top:4px;color:var(--green-500);display:none"></div>
+        </div>
         <div class="payment-methods">
           <div class="payment-methods-label">Payment Method</div>
           <div class="payment-method-options">
@@ -3549,6 +3557,29 @@ function copyAddr(btn) {
     btn.classList.add('copied');
     setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
   });
+}
+
+let activeDiscount = 0;
+function applyDiscount() {
+  const code = document.getElementById('coDiscount').value.trim().toUpperCase();
+  const msg = document.getElementById('discountMsg');
+  const codes = { 'TITAN15': 15, 'WELCOME10': 10 };
+  if (codes[code]) {
+    activeDiscount = codes[code];
+    msg.textContent = '✓ ' + code + ' applied — ' + codes[code] + '% off!';
+    msg.style.display = 'block';
+    msg.style.color = 'var(--green-500)';
+    // Recalculate total
+    const totalEl = document.getElementById('checkoutTotal');
+    const currentTotal = parseFloat(totalEl.textContent.replace('$', ''));
+    const discounted = currentTotal * (1 - codes[code] / 100);
+    totalEl.textContent = '$' + discounted.toFixed(2);
+  } else {
+    activeDiscount = 0;
+    msg.textContent = 'Invalid code';
+    msg.style.display = 'block';
+    msg.style.color = 'var(--red-500)';
+  }
 }
 
 function submitOrder(e) {
