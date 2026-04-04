@@ -4281,38 +4281,7 @@ function submitLeaveMessage() {
   });
 }
 
-// ── Social Proof Notifications ──
-(function() {
-  const proofs = [
-    { text: 'Dr. M. from California just ordered BPC-157', time: '3 min ago' },
-    { text: 'Research Lab in Texas ordered TB-500 (10mg)', time: '7 min ago' },
-    { text: 'J. Thompson from New York just ordered Retatrutide', time: '12 min ago' },
-    { text: 'Pacific NW Research placed a bulk order', time: '18 min ago' },
-    { text: 'Dr. K. from Florida ordered BPC-157 Nasal Spray', time: '24 min ago' },
-    { text: 'University Lab in Ohio ordered CJC/Ipa blend', time: '31 min ago' }
-  ];
-  let idx = 0;
-  const toast = document.getElementById('socialProofToast');
-  const textEl = document.getElementById('socialProofText');
-  const timeEl = document.getElementById('socialProofTime');
-
-  function showProof() {
-    const p = proofs[idx % proofs.length];
-    textEl.textContent = p.text;
-    timeEl.textContent = p.time;
-    toast.classList.add('show');
-    setTimeout(() => {
-      toast.classList.remove('show');
-    }, 5000);
-    idx++;
-  }
-
-  // Start after 8 seconds, then every 30 seconds
-  setTimeout(() => {
-    showProof();
-    setInterval(showProof, 30000);
-  }, 8000);
-})();
+// Social proof notifications removed
 
 // ── Newsletter Submission ──
 function submitNewsletter(e) {
