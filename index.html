@@ -2858,21 +2858,20 @@ footer {
             </label>
           </div>
           <div class="crypto-details visible" id="cryptoDetails">
-            <div style="background:var(--blue-50);border:1px solid var(--blue-200);border-radius:8px;padding:16px;margin-bottom:16px;font-size:0.8125rem;color:var(--gray-700);line-height:1.7">
-              <div style="font-weight:700;color:var(--gray-900);margin-bottom:8px">How to Pay with Crypto (3 Easy Steps):</div>
-              <div>1. Copy the wallet address below</div>
-              <div>2. Open your crypto wallet app (Coinbase, MetaMask, Phantom, Trust Wallet, etc.)</div>
-              <div>3. Send the exact order total in USDC on Solana network to the address</div>
-              <div style="margin-top:8px;font-size:0.75rem;color:var(--gray-500)">Your order ships within 24 hours of payment confirmation. You'll receive an email with tracking info.</div>
-              <div style="margin-top:4px;font-size:0.75rem;color:var(--gray-500)">Don't have crypto? Select "Bank Transfer" and we'll email you wire instructions.</div>
+            <div style="background:var(--blue-50);border:1px solid var(--blue-200);border-radius:8px;padding:20px;font-size:0.8125rem;color:var(--gray-700);line-height:1.7">
+              <div style="font-weight:700;color:var(--gray-900);margin-bottom:12px;font-size:0.9375rem">Pay with 300+ Cryptocurrencies</div>
+              <div style="display:flex;gap:12px;margin-bottom:14px;flex-wrap:wrap">
+                <span style="padding:6px 14px;background:white;border:1px solid var(--gray-200);border-radius:6px;font-size:0.75rem;font-weight:600">BTC</span>
+                <span style="padding:6px 14px;background:white;border:1px solid var(--gray-200);border-radius:6px;font-size:0.75rem;font-weight:600">ETH</span>
+                <span style="padding:6px 14px;background:white;border:1px solid var(--gray-200);border-radius:6px;font-size:0.75rem;font-weight:600">USDC</span>
+                <span style="padding:6px 14px;background:white;border:1px solid var(--gray-200);border-radius:6px;font-size:0.75rem;font-weight:600">SOL</span>
+                <span style="padding:6px 14px;background:white;border:1px solid var(--gray-200);border-radius:6px;font-size:0.75rem;font-weight:600">LTC</span>
+                <span style="padding:6px 14px;background:white;border:1px solid var(--gray-200);border-radius:6px;font-size:0.75rem;font-weight:600">DOGE</span>
+                <span style="padding:6px 14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:6px;font-size:0.75rem;color:var(--gray-500)">+ 290 more</span>
+              </div>
+              <div>Click "Complete Purchase" to choose your coin and get a secure payment page.</div>
+              <div style="margin-top:8px;font-size:0.75rem;color:var(--gray-500)">Powered by NOWPayments · Ships within 24hrs of confirmation</div>
             </div>
-            <div style="font-size:0.8125rem;font-weight:600;color:var(--gray-700);margin-bottom:4px;">Send exact total to:</div>
-            <div style="font-size:0.75rem;color:var(--gray-500);margin-bottom:8px;">USDC (Solana Network)</div>
-            <div class="crypto-addr">
-              <code id="cryptoWallet">DEHeTxWAhXhmPBMYr5orRXDMMF1vUZ8E2vjB4CHowLQM</code>
-              <button onclick="copyAddr(this)">Copy</button>
-            </div>
-            <p class="crypto-network-note">Also accepting BTC &amp; ETH — addresses provided after order confirmation.</p>
           </div>
           <div class="bank-details" id="bankDetails">
             <strong>Bank transfer details will be emailed to you immediately after placing your order.</strong><br>
@@ -3204,96 +3203,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ── Product SVG Illustrations ──
 function getProductSVG(product) {
-  // Nasal spray bottle
-  if (product.id.includes('nasal') || product.id.includes('spray')) {
-    return `<svg class="product-illustration" viewBox="0 0 80 120" xmlns="http://www.w3.org/2000/svg">
-      <!-- Spray actuator -->
-      <rect x="28" y="8" width="24" height="14" rx="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/>
-      <rect x="52" y="10" width="14" height="5" rx="2.5" fill="#cbd5e1" stroke="#94a3b8" stroke-width="0.75"/>
-      <circle cx="66" cy="12.5" r="1.5" fill="#94a3b8"/>
-      <!-- Neck -->
-      <rect x="33" y="22" width="14" height="10" rx="2" fill="#cbd5e1" stroke="#94a3b8" stroke-width="0.75"/>
-      <!-- Bottle body -->
-      <path d="M25 32 L25 100 Q25 110 35 110 L45 110 Q55 110 55 100 L55 32 Z" fill="url(#sprayGrad-${product.id})" stroke="#94a3b8" stroke-width="1"/>
-      <!-- Liquid level -->
-      <path d="M26 55 L54 55 L54 100 Q54 109 45 109 L35 109 Q26 109 26 100 Z" fill="rgba(20,184,166,0.15)"/>
-      <!-- Label area -->
-      <rect x="28" y="60" width="24" height="30" rx="2" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
-      <line x1="31" y1="68" x2="49" y2="68" stroke="rgba(20,184,166,0.4)" stroke-width="1"/>
-      <line x1="33" y1="73" x2="47" y2="73" stroke="rgba(255,255,255,0.12)" stroke-width="0.75"/>
-      <line x1="33" y1="77" x2="47" y2="77" stroke="rgba(255,255,255,0.12)" stroke-width="0.75"/>
-      <line x1="35" y1="81" x2="45" y2="81" stroke="rgba(255,255,255,0.08)" stroke-width="0.75"/>
-      <!-- Spray mist -->
-      <circle cx="72" cy="8" r="1" fill="rgba(20,184,166,0.3)"/>
-      <circle cx="75" cy="5" r="0.75" fill="rgba(20,184,166,0.2)"/>
-      <circle cx="70" cy="4" r="0.5" fill="rgba(20,184,166,0.15)"/>
-      <defs>
-        <linearGradient id="sprayGrad-${product.id}" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#f1f5f9"/>
-          <stop offset="100%" stop-color="#e2e8f0"/>
-        </linearGradient>
-      </defs>
-    </svg>`;
-  }
-  // Dropper bottle (MK-677 liquid)
-  if (product.id === 'mk677') {
-    return `<svg class="product-illustration" viewBox="0 0 80 120" xmlns="http://www.w3.org/2000/svg">
-      <!-- Dropper squeeze bulb -->
-      <ellipse cx="40" cy="12" rx="10" ry="10" fill="#475569" stroke="#64748b" stroke-width="1"/>
-      <!-- Dropper stem -->
-      <rect x="37" y="22" width="6" height="20" rx="1" fill="#cbd5e1" stroke="#94a3b8" stroke-width="0.75"/>
-      <!-- Bottle neck -->
-      <rect x="33" y="38" width="14" height="6" rx="2" fill="#94a3b8"/>
-      <!-- Bottle body -->
-      <path d="M22 44 Q22 44 22 44 L22 102 Q22 112 32 112 L48 112 Q58 112 58 102 L58 44 Z" fill="url(#dropperGrad)" stroke="#64748b" stroke-width="1"/>
-      <!-- Amber tint -->
-      <path d="M23 45 L57 45 L57 102 Q57 111 48 111 L32 111 Q23 111 23 102 Z" fill="rgba(180,120,40,0.12)"/>
-      <!-- Liquid -->
-      <path d="M23 65 L57 65 L57 102 Q57 111 48 111 L32 111 Q23 111 23 102 Z" fill="rgba(20,184,166,0.18)"/>
-      <!-- Label -->
-      <rect x="26" y="70" width="28" height="28" rx="2" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
-      <line x1="30" y1="78" x2="50" y2="78" stroke="rgba(20,184,166,0.4)" stroke-width="1"/>
-      <line x1="32" y1="83" x2="48" y2="83" stroke="rgba(255,255,255,0.12)" stroke-width="0.75"/>
-      <line x1="32" y1="87" x2="48" y2="87" stroke="rgba(255,255,255,0.12)" stroke-width="0.75"/>
-      <line x1="34" y1="91" x2="46" y2="91" stroke="rgba(255,255,255,0.08)" stroke-width="0.75"/>
-      <!-- Dropper tip -->
-      <line x1="40" y1="42" x2="40" y2="48" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
-      <!-- Drop -->
-      <ellipse cx="40" cy="51" rx="2" ry="2.5" fill="rgba(20,184,166,0.5)"/>
-      <defs>
-        <linearGradient id="dropperGrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#1e293b"/>
-          <stop offset="100%" stop-color="#334155"/>
-        </linearGradient>
-      </defs>
-    </svg>`;
-  }
-  // Default: vial/ampoule
-  return `<svg class="product-illustration" viewBox="0 0 80 120" xmlns="http://www.w3.org/2000/svg">
-    <!-- Cap -->
-    <rect x="28" y="4" width="24" height="12" rx="3" fill="#64748b" stroke="#475569" stroke-width="1"/>
-    <!-- Cap ring -->
-    <rect x="26" y="14" width="28" height="5" rx="1" fill="#94a3b8" stroke="#64748b" stroke-width="0.75"/>
-    <!-- Crimp ring -->
-    <path d="M30 19 L30 24 Q30 26 32 26 L48 26 Q50 26 50 24 L50 19" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
-    <!-- Neck -->
-    <rect x="33" y="24" width="14" height="8" rx="1" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.25)" stroke-width="0.75"/>
-    <!-- Vial body -->
-    <path d="M24 32 L24 100 Q24 110 34 110 L46 110 Q56 110 56 100 L56 32 Z" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
-    <!-- Liquid fill -->
-    <path d="M25 50 L55 50 L55 100 Q55 109 46 109 L34 109 Q25 109 25 100 Z" fill="rgba(20,184,166,0.15)"/>
-    <!-- Liquid surface highlight -->
-    <line x1="27" y1="50" x2="53" y2="50" stroke="rgba(20,184,166,0.35)" stroke-width="1"/>
-    <!-- Label -->
-    <rect x="28" y="58" width="24" height="35" rx="2" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>
-    <line x1="31" y1="66" x2="49" y2="66" stroke="rgba(20,184,166,0.4)" stroke-width="1"/>
-    <line x1="33" y1="72" x2="47" y2="72" stroke="rgba(255,255,255,0.1)" stroke-width="0.75"/>
-    <line x1="33" y1="76" x2="47" y2="76" stroke="rgba(255,255,255,0.1)" stroke-width="0.75"/>
-    <line x1="35" y1="80" x2="45" y2="80" stroke="rgba(255,255,255,0.07)" stroke-width="0.75"/>
-    <line x1="33" y1="86" x2="47" y2="86" stroke="rgba(255,255,255,0.05)" stroke-width="0.75"/>
-    <!-- Glass reflection -->
-    <line x1="28" y1="35" x2="28" y2="95" stroke="rgba(255,255,255,0.08)" stroke-width="2" stroke-linecap="round"/>
-  </svg>`;
+  // Use real stock photos as backgrounds
+  const photos = {
+    vial: 'img_vial3.jpg',
+    spray: 'img_vial1.jpg',
+    liquid: 'img_lab.jpg'
+  };
+  let photo = photos.vial;
+  if (product.id.includes('nasal') || product.id.includes('spray')) photo = photos.spray;
+  if (product.id === 'mk677') photo = photos.liquid;
+
+  return `<div style="width:100%;height:100%;background:url('${photo}') center/cover;opacity:0.7"></div>`;
 }
 
 // ── Render Product Grid ──
