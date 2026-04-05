@@ -94,7 +94,11 @@ input,select,textarea{font-family:inherit;outline:none}
 .product-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 .product-card{background:#fff;border:1px solid #e5e7eb;border-radius:var(--radius);overflow:hidden;transition:all .3s;position:relative;box-shadow:0 2px 8px rgba(0,0,0,.04)}
 .product-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.1)}
-.product-img{height:260px;background:#f0f0f0;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center}
+.product-img{height:200px;background:#fafafa;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;border-bottom:1px solid #eee}
+.product-img::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.product-img .prod-name{font-size:1.75rem;font-weight:900;color:#1a1a1a;letter-spacing:1px;margin-bottom:4px}
+.product-img .prod-dose{font-size:.85rem;color:#999;font-weight:500;letter-spacing:2px}
+.product-img .prod-badge{margin-top:12px;padding:4px 14px;border-radius:4px;font-size:.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:1.5px solid}
 .product-vial{display:none}
 .product-tag{position:absolute;top:12px;right:12px;background:rgba(6,182,212,.15);color:var(--teal);font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.5px;text-transform:uppercase}
 .product-info{padding:1.25rem 1.5rem 1.5rem}
@@ -654,22 +658,27 @@ let appliedDiscount = null;
 function renderProducts(filter="all"){
   const grid = document.getElementById("productGrid");
   const filtered = filter === "all" ? PRODUCTS : PRODUCTS.filter(p => p.type === filter);
-  const imgs = {
-    "BPC-157":"mockup_bpc157.png",
-    "TB-500":"mockup_tb500.png",
-    "Retatrutide":"mockup_retatrutide.png",
-    "CJC-1295 + Ipamorelin":"mockup_cjcipa.png",
-    "MK-677":"mockup_cjcipa.png",
-    "Melanotan-2":"mockup_tb500.png",
-    "BPC-157 Nasal Spray":"mockup_bpc157.png",
-    "Selank Nasal Spray":"mockup_selank.png",
-    "Semax Nasal Spray":"mockup_semax.png",
-    "PT-141 Nasal Spray":"mockup_retatrutide.png"
+  const colors = {
+    "BPC-157":"#c4943d","TB-500":"#e74c3c","Retatrutide":"#2ecc71",
+    "CJC-1295 + Ipamorelin":"#3498db","MK-677":"#e67e22","Melanotan-2":"#ff9800",
+    "BPC-157 Nasal Spray":"#c4943d","Selank Nasal Spray":"#9b59b6",
+    "Semax Nasal Spray":"#1abc9c","PT-141 Nasal Spray":"#e91e63"
   };
+  const shortNames = {
+    "BPC-157":"BPC-157","TB-500":"TB-500","Retatrutide":"RETA",
+    "CJC-1295 + Ipamorelin":"CJC/IPA","MK-677":"MK-677","Melanotan-2":"MT-II",
+    "BPC-157 Nasal Spray":"BPC-157","Selank Nasal Spray":"SELANK",
+    "Semax Nasal Spray":"SEMAX","PT-141 Nasal Spray":"PT-141"
+  };
+  const c = (name) => colors[name] || '#c4943d';
   grid.innerHTML = filtered.map(p => `
     <div class="product-card" data-type="${p.type}">
-      <div class="product-img" style="background-image:url('${imgs[p.name] || "mockup_bpc157.png"}')">
-        ${p.tag ? `<span class="product-tag">${p.tag}</span>` : ""}
+      <div class="product-img" style="background:#fafafa">
+        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:${c(p.name)}"></div>
+        ${p.tag ? `<span class="product-tag" style="background:${c(p.name)}22;color:${c(p.name)}">${p.tag}</span>` : ""}
+        <div class="prod-name">${shortNames[p.name] || p.name}</div>
+        <div class="prod-dose">${p.dose}</div>
+        <div class="prod-badge" style="color:${c(p.name)};border-color:${c(p.name)}30">${p.type === 'spray' ? 'NASAL SPRAY' : 'LYOPHILIZED'}</div>
       </div>
       <div class="product-info">
         <div class="product-name">${p.name}</div>
