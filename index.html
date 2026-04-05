@@ -49,7 +49,9 @@ input,select,textarea{font-family:inherit;outline:none}
 .mobile-toggle{display:none;background:none;color:#fff;font-size:1.5rem;padding:.5rem}
 
 /* HERO */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;overflow:hidden}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;overflow:hidden;background:url('img_vial1.jpg') center/cover fixed}
+.hero::after{content:'';position:absolute;inset:0;background:rgba(10,15,30,0.88);z-index:0}
+.hero>*{position:relative;z-index:1}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(6,182,212,.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(6,182,212,.04) 0%,transparent 40%)}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(6,182,212,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(6,182,212,.03) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%)}
 .hero-content{position:relative;max-width:800px}
@@ -86,15 +88,11 @@ input,select,textarea{font-family:inherit;outline:none}
 .product-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 .product-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .3s;position:relative}
 .product-card:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:0 12px 40px rgba(6,182,212,.1)}
-.product-img{height:200px;background:var(--bg3);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.product-img::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(6,182,212,.06),transparent 70%)}
-.product-vial{position:relative;display:flex;flex-direction:column;align-items:center}
-.product-vial .vial-body{width:36px;height:80px;background:linear-gradient(180deg,rgba(6,182,212,.15) 0%,rgba(6,182,212,.05) 100%);border:2px solid rgba(6,182,212,.3);border-radius:4px 4px 8px 8px;position:relative}
-.product-vial .vial-cap{width:28px;height:10px;background:var(--teal);border-radius:3px 3px 0 0;margin-bottom:-1px}
-.product-vial .vial-label{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-size:.45rem;font-weight:700;color:var(--teal);letter-spacing:1px;white-space:nowrap}
-.product-vial.spray .vial-body{width:28px;height:70px;border-radius:4px 4px 6px 6px}
-.product-vial.spray .vial-cap{width:16px;height:24px;background:var(--teal);border-radius:3px 3px 2px 2px;position:relative}
-.product-vial.spray .vial-cap::after{content:'';position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:6px;height:10px;background:var(--teal-dark);border-radius:2px}
+.product-img{height:200px;background:url('img_vial1.jpg') center/cover;position:relative;overflow:hidden}
+.product-img::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,15,30,0.3) 0%,rgba(10,15,30,0.7) 100%)}
+.product-img.spray-img{background-image:url('img_research.jpg')}
+.product-vial{display:none}
+.product-vial .vial-body,.product-vial .vial-cap,.product-vial .vial-label{display:none}
 .product-tag{position:absolute;top:12px;right:12px;background:rgba(6,182,212,.15);color:var(--teal);font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.5px;text-transform:uppercase}
 .product-info{padding:1.25rem 1.5rem 1.5rem}
 .product-name{font-size:1rem;font-weight:700;color:#fff;margin-bottom:4px}
@@ -657,12 +655,8 @@ function renderProducts(filter="all"){
   const filtered = filter === "all" ? PRODUCTS : PRODUCTS.filter(p => p.type === filter);
   grid.innerHTML = filtered.map(p => `
     <div class="product-card" data-type="${p.type}">
-      <div class="product-img">
+      <div class="product-img ${p.type === 'spray' ? 'spray-img' : ''}">
         ${p.tag ? `<span class="product-tag">${p.tag}</span>` : ""}
-        <div class="product-vial ${p.type}">
-          <div class="vial-cap"></div>
-          <div class="vial-body"><span class="vial-label">${p.dose}</span></div>
-        </div>
       </div>
       <div class="product-info">
         <div class="product-name">${p.name}</div>
