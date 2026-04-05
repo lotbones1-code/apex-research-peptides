@@ -654,20 +654,21 @@ let appliedDiscount = null;
 function renderProducts(filter="all"){
   const grid = document.getElementById("productGrid");
   const filtered = filter === "all" ? PRODUCTS : PRODUCTS.filter(p => p.type === filter);
-  const mockups = {
-    "BPC-157":"mockup_bpc157.png","BPC-157 10mg":"mockup_bpc157.png",
-    "TB-500":"mockup_tb500.png","TB-500 10mg":"mockup_tb500.png",
-    "Retatrutide":"mockup_retatrutide.png",
-    "CJC-1295 + Ipamorelin":"mockup_cjcipa.png",
-    "MK-677":"mockup_cjcipa.png","Melanotan-2":"mockup_tb500.png",
-    "BPC-157 Nasal Spray":"mockup_bpc157.png",
-    "Selank Nasal Spray":"mockup_selank.png",
-    "Semax Nasal Spray":"mockup_selank.png",
-    "PT-141 Nasal Spray":"mockup_retatrutide.png"
+  const labels = {
+    "BPC-157":"label_bpc157.png",
+    "TB-500":"label_tb500.png",
+    "Retatrutide":"label_retatrutide.png",
+    "CJC-1295 + Ipamorelin":"label_cjcipa.png",
+    "MK-677":"label_cjcipa.png",
+    "Melanotan-2":"label_tb500.png",
+    "BPC-157 Nasal Spray":"label_bpc157.png",
+    "Selank Nasal Spray":"label_selank.png",
+    "Semax Nasal Spray":"label_semax.png",
+    "PT-141 Nasal Spray":"label_retatrutide.png"
   };
   grid.innerHTML = filtered.map(p => `
     <div class="product-card" data-type="${p.type}">
-      <div class="product-img" style="background-image:url('${mockups[p.name] || "mockup_bpc157.png"}')">
+      <div class="product-img" style="background-image:url('${labels[p.name] || "label_bpc157.png"}');background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff">
         ${p.tag ? `<span class="product-tag">${p.tag}</span>` : ""}
       </div>
       <div class="product-info">
