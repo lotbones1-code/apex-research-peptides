@@ -560,7 +560,7 @@ input,select,textarea{font-family:inherit;outline:none}
             <div class="payment-radio"></div>
             <div class="payment-details">
               <strong>Direct Wallet Transfer</strong>
-              <span>Send crypto directly to our Solana wallet</span>
+              <span>Send crypto directly to our BTC, ETH, or Solana wallets</span>
             </div>
           </label>
           <label class="payment-option" data-method="bank">
@@ -581,9 +581,22 @@ input,select,textarea{font-family:inherit;outline:none}
         </div>
 
         <div class="wallet-info" id="walletInfo">
-          <p>Send the exact total to the following Solana wallet address:</p>
-          <code>DEHeTxWAhXhmPBMYr5orRXDMMF1vUZ8E2vjB4CHowLQM</code>
-          <p style="margin-top:.5rem;font-size:.7rem;color:var(--text3)">After sending, include the transaction hash in the order notes. Your order ships once confirmed.</p>
+          <p>Send the exact total to one of the wallet addresses below, based on the network you use:</p>
+          <div style="display:grid;gap:.6rem;margin-top:.75rem">
+            <div>
+              <p style="margin-bottom:.25rem;font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Bitcoin (BTC)</p>
+              <code>bc1qvw9699x8js6jexr5x846jc9eea404m0rwqdt5l</code>
+            </div>
+            <div>
+              <p style="margin-bottom:.25rem;font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Ethereum / USDC (ERC20)</p>
+              <code>0xD06F210375B68E40Ae5B82FA7DF36871b0DF867E</code>
+            </div>
+            <div>
+              <p style="margin-bottom:.25rem;font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Solana / USDC (Solana)</p>
+              <code>6VXmnP1iXkKbSdp7uEvpjZbuERD9hupvT2YbtPQeZdT4</code>
+            </div>
+          </div>
+          <p style="margin-top:.75rem;font-size:.7rem;color:var(--text3)">After sending, include the transaction hash in the order notes. Your order ships once payment is confirmed.</p>
         </div>
 
         <div class="bank-info" id="bankInfo">
