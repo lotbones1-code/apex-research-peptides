@@ -503,45 +503,45 @@ input,select,textarea{font-family:inherit;outline:none}
         <div class="form-row">
           <div class="form-group"><label>ZIP / Postal Code *</label><input type="text" id="zip" required></div>
           <div class="form-group">
-            <label>Country *</label>
-            <select id="country" required>
-              <option value="">Select Country</option>
-              <option value="US">United States</option>
-              <option value="CA">Canada</option>
-              <option value="GB">United Kingdom</option>
-              <option value="AU">Australia</option>
-              <option value="DE">Germany</option>
-              <option value="FR">France</option>
-              <option value="NL">Netherlands</option>
-              <option value="SE">Sweden</option>
-              <option value="NO">Norway</option>
-              <option value="DK">Denmark</option>
-              <option value="FI">Finland</option>
-              <option value="AT">Austria</option>
-              <option value="CH">Switzerland</option>
-              <option value="BE">Belgium</option>
-              <option value="IE">Ireland</option>
-              <option value="NZ">New Zealand</option>
-              <option value="JP">Japan</option>
-              <option value="SG">Singapore</option>
-              <option value="BR">Brazil</option>
-              <option value="MX">Mexico</option>
-              <option value="IN">India</option>
-              <option value="PL">Poland</option>
-              <option value="CZ">Czech Republic</option>
-              <option value="PT">Portugal</option>
-              <option value="ES">Spain</option>
-              <option value="IT">Italy</option>
-              <option value="IL">Israel</option>
-              <option value="ZA">South Africa</option>
-              <option value="AE">United Arab Emirates</option>
-              <option value="OTHER">Other</option>
-            </select>
+            <label>Country / Region *</label>
+            <input type="text" id="country" list="countryList" placeholder="Enter your country or region" required>
+            <datalist id="countryList">
+              <option value="United States"></option>
+              <option value="Canada"></option>
+              <option value="United Kingdom"></option>
+              <option value="Australia"></option>
+              <option value="Germany"></option>
+              <option value="France"></option>
+              <option value="Netherlands"></option>
+              <option value="Sweden"></option>
+              <option value="Norway"></option>
+              <option value="Denmark"></option>
+              <option value="Finland"></option>
+              <option value="Austria"></option>
+              <option value="Switzerland"></option>
+              <option value="Belgium"></option>
+              <option value="Ireland"></option>
+              <option value="New Zealand"></option>
+              <option value="Japan"></option>
+              <option value="Singapore"></option>
+              <option value="Brazil"></option>
+              <option value="Mexico"></option>
+              <option value="India"></option>
+              <option value="Poland"></option>
+              <option value="Czech Republic"></option>
+              <option value="Portugal"></option>
+              <option value="Spain"></option>
+              <option value="Italy"></option>
+              <option value="Israel"></option>
+              <option value="South Africa"></option>
+              <option value="United Arab Emirates"></option>
+            </datalist>
           </div>
         </div>
         <div class="form-row full">
-          <div class="form-group"><label>Order Notes (optional)</label><textarea id="notes" rows="2" placeholder="Special instructions..."></textarea></div>
+          <div class="form-group"><label>Order Notes (optional)</label><textarea id="notes" rows="2" placeholder="Special instructions, delivery notes, or customs requests..."></textarea></div>
         </div>
+        <p style="margin-top:.35rem;font-size:.75rem;color:var(--text3)">Worldwide checkout is enabled. If your country has special customs or courier requirements, add them in the notes and we will confirm by email.</p>
       </div>
 
       <div class="form-section">
@@ -596,7 +596,7 @@ input,select,textarea{font-family:inherit;outline:none}
               <code>6VXmnP1iXkKbSdp7uEvpjZbuERD9hupvT2YbtPQeZdT4</code>
             </div>
           </div>
-          <p style="margin-top:.75rem;font-size:.7rem;color:var(--text3)">After sending, include the transaction hash in the order notes. Your order ships once payment is confirmed.</p>
+          <p style="margin-top:.75rem;font-size:.7rem;color:var(--text3)">After sending, include the transaction hash in the order notes. Your order ships once payment is confirmed. International customers can also add customs or courier notes here.</p>
         </div>
 
         <div class="bank-info" id="bankInfo">
