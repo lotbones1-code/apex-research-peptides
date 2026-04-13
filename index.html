@@ -191,54 +191,69 @@ input,select,textarea{font-family:inherit;outline:none}
 /* CHECKOUT MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:300;display:none;align-items:center;justify-content:center;padding:1rem}
 .modal-overlay.show{display:flex}
-.checkout-modal{background:linear-gradient(180deg,rgba(15,23,42,.98),rgba(10,15,28,.98));border:1px solid var(--border);border-radius:18px;width:640px;max-width:100%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.45)}
-.checkout-header{padding:1.5rem 2rem 1.25rem;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(6,182,212,.08),rgba(6,182,212,0))}
+.checkout-modal{background:linear-gradient(180deg,rgba(15,23,42,.98),rgba(10,15,28,.98));border:1px solid var(--border);border-radius:22px;width:980px;max-width:100%;max-height:92vh;overflow-y:auto;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.45)}
+.checkout-header{padding:1.65rem 2rem 1.35rem;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(6,182,212,.09),rgba(6,182,212,0))}
 .checkout-header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
 .checkout-header-copy small{display:block;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:.45rem}
-.checkout-header-copy h2{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:.35rem}
-.checkout-header-copy p{font-size:.82rem;color:var(--text2);max-width:420px;line-height:1.7}
+.checkout-header-copy h2{font-size:1.45rem;font-weight:800;color:#fff;margin-bottom:.35rem}
+.checkout-header-copy p{font-size:.83rem;color:var(--text2);max-width:560px;line-height:1.7}
 .checkout-trust{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
 .checkout-trust span{background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.18);color:#d5f6fb;padding:.42rem .7rem;border-radius:999px;font-size:.7rem;font-weight:600;letter-spacing:.02em}
 .checkout-close{position:absolute;top:1.25rem;right:1.5rem;background:none;color:var(--text3);font-size:1.25rem;transition:color .2s}
 .checkout-close:hover{color:#fff}
 .checkout-form{padding:1.5rem 2rem 2rem}
-.form-section{margin-bottom:1.5rem}
+.checkout-body{display:grid;grid-template-columns:minmax(0,1.35fr) 320px;gap:1.25rem;align-items:start}
+.checkout-main{display:flex;flex-direction:column;gap:1rem}
+.checkout-sidebar{display:flex;flex-direction:column;gap:1rem;position:sticky;top:1rem}
+.form-section{margin-bottom:0;background:rgba(15,23,42,.62);border:1px solid var(--border);border-radius:16px;padding:1.1rem 1.1rem 1rem;box-shadow:inset 0 1px 0 rgba(255,255,255,.02)}
 .form-section h3{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--teal);margin-bottom:1rem}
+.form-section-intro{font-size:.76rem;color:var(--text3);line-height:1.7;margin:-.35rem 0 1rem}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.75rem}
 .form-row.full{grid-template-columns:1fr}
 .form-group{display:flex;flex-direction:column;gap:4px}
 .form-group label{font-size:.75rem;font-weight:600;color:var(--text2)}
-.form-group input,.form-group select,.form-group textarea{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.7rem 1rem;color:#fff;font-size:.85rem;transition:border-color .2s}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--teal)}
+.form-group small{font-size:.68rem;color:var(--text3);line-height:1.5}
+.form-group input,.form-group select,.form-group textarea{background:rgba(2,6,23,.7);border:1px solid var(--border);border-radius:12px;padding:.78rem 1rem;color:#fff;font-size:.85rem;transition:border-color .2s,box-shadow .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(6,182,212,.08)}
 .form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8'%3E%3Cpath d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
 .form-group select option{background:var(--bg2);color:var(--text)}
+.helper-pill-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.9rem}
+.helper-pill{background:rgba(6,182,212,.06);border:1px solid rgba(6,182,212,.14);color:#cdeff6;padding:.42rem .65rem;border-radius:999px;font-size:.69rem;font-weight:600}
 .payment-options{display:flex;flex-direction:column;gap:.75rem}
-.payment-option{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--bg);border:2px solid var(--border);border-radius:var(--radius);cursor:pointer;transition:all .2s}
-.payment-option:hover,.payment-option.selected{border-color:var(--teal)}
+.payment-option{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.05rem;background:rgba(2,6,23,.6);border:2px solid var(--border);border-radius:14px;cursor:pointer;transition:all .2s}
+.payment-option:hover,.payment-option.selected{border-color:var(--teal);background:linear-gradient(180deg,rgba(6,182,212,.06),rgba(2,6,23,.72));box-shadow:0 10px 30px rgba(6,182,212,.08)}
 .payment-option input{display:none}
-.payment-radio{width:18px;height:18px;border:2px solid var(--border);border-radius:50%;position:relative;flex-shrink:0;transition:border-color .2s}
+.payment-radio{width:18px;height:18px;border:2px solid var(--border);border-radius:50%;position:relative;flex-shrink:0;transition:border-color .2s;margin-top:.1rem}
 .payment-option.selected .payment-radio{border-color:var(--teal)}
 .payment-option.selected .payment-radio::after{content:'';position:absolute;top:3px;left:3px;width:8px;height:8px;background:var(--teal);border-radius:50%}
 .payment-details{flex:1}
 .payment-details strong{font-size:.85rem;color:#fff;display:block;margin-bottom:2px}
 .payment-details span{font-size:.75rem;color:var(--text3)}
+.payment-help{margin-top:.85rem;font-size:.74rem;color:var(--text3);line-height:1.7}
 .crypto-options{display:none;margin-top:1rem;gap:.5rem}
 .crypto-options.show{display:grid;grid-template-columns:repeat(4,1fr)}
-.crypto-btn{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.6rem;text-align:center;font-size:.75rem;font-weight:600;color:var(--text2);transition:all .2s}
+.crypto-btn{background:rgba(2,6,23,.7);border:1px solid var(--border);border-radius:12px;padding:.7rem;text-align:center;font-size:.75rem;font-weight:600;color:var(--text2);transition:all .2s}
 .crypto-btn:hover,.crypto-btn.selected{border-color:var(--teal);color:var(--teal);background:var(--teal-glow)}
-.wallet-info{display:none;margin-top:1rem;padding:1rem;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm)}
+.wallet-info{display:none;margin-top:1rem;padding:1rem;background:rgba(2,6,23,.72);border:1px solid var(--border);border-radius:14px}
 .wallet-info.show{display:block}
 .wallet-info p{font-size:.75rem;color:var(--text2);margin-bottom:.5rem}
-.wallet-info code{display:block;font-size:.7rem;color:var(--teal);background:var(--bg3);padding:.5rem;border-radius:6px;word-break:break-all;user-select:all}
-.bank-info{display:none;margin-top:1rem;padding:1rem;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm)}
+.wallet-info code{display:block;font-size:.7rem;color:var(--teal);background:var(--bg3);padding:.5rem;border-radius:8px;word-break:break-all;user-select:all}
+.bank-info{display:none;margin-top:1rem;padding:1rem;background:rgba(2,6,23,.72);border:1px solid var(--border);border-radius:14px}
 .bank-info.show{display:block}
 .bank-info p{font-size:.8rem;color:var(--text2);line-height:1.7}
-.order-summary{background:linear-gradient(180deg,rgba(15,23,42,.9),rgba(2,6,23,.9));border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:1.5rem}
+.order-summary{background:linear-gradient(180deg,rgba(15,23,42,.92),rgba(2,6,23,.95));border:1px solid var(--border);border-radius:16px;padding:1.25rem;margin-bottom:0}
 .order-summary h4{font-size:.8rem;font-weight:700;color:#fff;margin-bottom:.75rem;text-transform:uppercase;letter-spacing:1px}
 .summary-note{margin-top:.9rem;padding-top:.85rem;border-top:1px solid var(--border);font-size:.73rem;color:var(--text3);line-height:1.7}
-.order-line{display:flex;justify-content:space-between;font-size:.8rem;color:var(--text2);margin-bottom:.35rem}
+.sidebar-card{background:rgba(15,23,42,.72);border:1px solid var(--border);border-radius:16px;padding:1rem 1.05rem}
+.sidebar-card h5{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#d7f7fc;margin-bottom:.75rem}
+.sidebar-card p{font-size:.78rem;color:var(--text2);line-height:1.7}
+.sidebar-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.75rem}
+.sidebar-list li{display:grid;grid-template-columns:14px 1fr;gap:.65rem;font-size:.79rem;color:var(--text2);line-height:1.6}
+.sidebar-list li span{color:var(--teal);font-weight:700}
+.sidebar-card a{color:var(--teal);font-weight:600}
+.order-line{display:flex;justify-content:space-between;font-size:.8rem;color:var(--text2);margin-bottom:.35rem;gap:.75rem}
 .order-line.total{font-weight:700;color:#fff;font-size:.95rem;padding-top:.5rem;border-top:1px solid var(--border);margin-top:.5rem}
-.btn-place{width:100%;background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;font-weight:700;font-size:.95rem;padding:1rem;border-radius:var(--radius-sm);letter-spacing:1px;text-transform:uppercase;transition:all .2s}
+.btn-place{width:100%;background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;font-weight:700;font-size:.95rem;padding:1rem;border-radius:12px;letter-spacing:1px;text-transform:uppercase;transition:all .2s}
 .btn-place:hover{box-shadow:0 4px 20px rgba(6,182,212,.3)}
 .btn-place:disabled{opacity:.5;cursor:not-allowed}
 .order-success{display:none;text-align:center;padding:3rem 2rem}
@@ -273,6 +288,11 @@ input,select,textarea{font-family:inherit;outline:none}
   .product-grid{grid-template-columns:repeat(2,1fr)}
   .footer-top{grid-template-columns:1fr 1fr;gap:2rem}
 }
+@media(max-width:900px){
+  .checkout-modal{width:760px}
+  .checkout-body{grid-template-columns:1fr}
+  .checkout-sidebar{position:static}
+}
 @media(max-width:768px){
   .nav-links{display:none;position:absolute;top:70px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:1rem 2rem;flex-direction:column;gap:1rem}
   .nav-links.open{display:flex}
@@ -280,7 +300,10 @@ input,select,textarea{font-family:inherit;outline:none}
   .trust-grid{grid-template-columns:1fr;gap:1.25rem}
   .product-grid{grid-template-columns:repeat(2,1fr);gap:1rem}
   .about-grid{grid-template-columns:1fr;gap:1rem}
+  .checkout-header{padding:1.2rem 1rem 1rem}
+  .checkout-form{padding:1rem 1rem 1.25rem}
   .form-row{grid-template-columns:1fr}
+  .form-section{padding:1rem}
   .crypto-options.show{grid-template-columns:repeat(2,1fr)}
   .footer-top{grid-template-columns:1fr;gap:1.5rem}
   .footer-bottom{flex-direction:column;text-align:center}
@@ -505,133 +528,165 @@ input,select,textarea{font-family:inherit;outline:none}
     </div>
     <button class="checkout-close" id="checkoutClose">&times;</button>
     <div class="checkout-form" id="checkoutForm">
-      <div class="form-section">
-        <h3>Shipping Information</h3>
-        <div class="form-row">
-          <div class="form-group"><label>First Name *</label><input type="text" id="firstName" required></div>
-          <div class="form-group"><label>Last Name *</label><input type="text" id="lastName" required></div>
-        </div>
-        <div class="form-row full">
-          <div class="form-group"><label>Email *</label><input type="email" id="email" required></div>
-        </div>
-        <div class="form-row full">
-          <div class="form-group"><label>Address *</label><input type="text" id="address" required></div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label>City *</label><input type="text" id="city" required></div>
-          <div class="form-group"><label>State / Province</label><input type="text" id="state"></div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label>ZIP / Postal Code *</label><input type="text" id="zip" required></div>
-          <div class="form-group">
-            <label>Country / Region *</label>
-            <input type="text" id="country" list="countryList" placeholder="Enter your country or region" required>
-            <datalist id="countryList">
-              <option value="United States"></option>
-              <option value="Canada"></option>
-              <option value="United Kingdom"></option>
-              <option value="Australia"></option>
-              <option value="Germany"></option>
-              <option value="France"></option>
-              <option value="Netherlands"></option>
-              <option value="Sweden"></option>
-              <option value="Norway"></option>
-              <option value="Denmark"></option>
-              <option value="Finland"></option>
-              <option value="Austria"></option>
-              <option value="Switzerland"></option>
-              <option value="Belgium"></option>
-              <option value="Ireland"></option>
-              <option value="New Zealand"></option>
-              <option value="Japan"></option>
-              <option value="Singapore"></option>
-              <option value="Brazil"></option>
-              <option value="Mexico"></option>
-              <option value="India"></option>
-              <option value="Poland"></option>
-              <option value="Czech Republic"></option>
-              <option value="Portugal"></option>
-              <option value="Spain"></option>
-              <option value="Italy"></option>
-              <option value="Israel"></option>
-              <option value="South Africa"></option>
-              <option value="United Arab Emirates"></option>
-            </datalist>
-          </div>
-        </div>
-        <div class="form-row full">
-          <div class="form-group"><label>Order Notes (optional)</label><textarea id="notes" rows="2" placeholder="Special instructions, delivery notes, or customs requests..."></textarea></div>
-        </div>
-        <p style="margin-top:.35rem;font-size:.75rem;color:var(--text3)">Worldwide checkout is enabled. If your country has special customs or courier requirements, add them in the notes and we will confirm by email.</p>
-      </div>
-
-      <div class="form-section">
-        <h3>Payment Method</h3>
-        <div class="payment-options">
-          <label class="payment-option selected" data-method="crypto">
-            <input type="radio" name="payment" value="crypto" checked>
-            <div class="payment-radio"></div>
-            <div class="payment-details">
-              <strong>Cryptocurrency</strong>
-              <span>Bitcoin, Ethereum, USDC, Solana — Fastest processing</span>
+      <div class="checkout-body">
+        <div class="checkout-main">
+          <div class="form-section">
+            <h3>Shipping Information</h3>
+            <p class="form-section-intro">Built for international orders. Enter the exact recipient and delivery information you want on the shipment confirmation.</p>
+            <div class="form-row">
+              <div class="form-group"><label>First Name *</label><input type="text" id="firstName" required></div>
+              <div class="form-group"><label>Last Name *</label><input type="text" id="lastName" required></div>
             </div>
-          </label>
-          <label class="payment-option" data-method="wallet">
-            <input type="radio" name="payment" value="wallet">
-            <div class="payment-radio"></div>
-            <div class="payment-details">
-              <strong>Direct Wallet Transfer</strong>
-              <span>Send crypto directly to our BTC, ETH, or Solana wallets</span>
+            <div class="form-row">
+              <div class="form-group"><label>Email *</label><input type="email" id="email" required><small>Order confirmation and tracking updates go here.</small></div>
+              <div class="form-group"><label>Phone / WhatsApp (optional)</label><input type="text" id="phone" placeholder="Include country code for international delivery"><small>Helpful if a courier needs to reach you.</small></div>
             </div>
-          </label>
-          <label class="payment-option" data-method="bank">
-            <input type="radio" name="payment" value="bank">
-            <div class="payment-radio"></div>
-            <div class="payment-details">
-              <strong>Bank Transfer</strong>
-              <span>Wire transfer — 1-3 business days processing</span>
+            <div class="form-row">
+              <div class="form-group"><label>Company / Lab (optional)</label><input type="text" id="company" placeholder="Institution, lab, or company name"></div>
+              <div class="form-group">
+                <label>Country / Region *</label>
+                <input type="text" id="country" list="countryList" placeholder="Enter your country or region" required>
+                <small>We accept worldwide orders.</small>
+                <datalist id="countryList">
+                  <option value="United States"></option>
+                  <option value="Canada"></option>
+                  <option value="United Kingdom"></option>
+                  <option value="Australia"></option>
+                  <option value="Germany"></option>
+                  <option value="France"></option>
+                  <option value="Netherlands"></option>
+                  <option value="Sweden"></option>
+                  <option value="Norway"></option>
+                  <option value="Denmark"></option>
+                  <option value="Finland"></option>
+                  <option value="Austria"></option>
+                  <option value="Switzerland"></option>
+                  <option value="Belgium"></option>
+                  <option value="Ireland"></option>
+                  <option value="New Zealand"></option>
+                  <option value="Japan"></option>
+                  <option value="Singapore"></option>
+                  <option value="Brazil"></option>
+                  <option value="Mexico"></option>
+                  <option value="India"></option>
+                  <option value="Poland"></option>
+                  <option value="Czech Republic"></option>
+                  <option value="Portugal"></option>
+                  <option value="Spain"></option>
+                  <option value="Italy"></option>
+                  <option value="Israel"></option>
+                  <option value="South Africa"></option>
+                  <option value="United Arab Emirates"></option>
+                </datalist>
+              </div>
             </div>
-          </label>
-        </div>
-
-        <div class="crypto-options show" id="cryptoOptions">
-          <button class="crypto-btn selected" data-coin="btc">BTC</button>
-          <button class="crypto-btn" data-coin="eth">ETH</button>
-          <button class="crypto-btn" data-coin="usdcsol">USDC</button>
-          <button class="crypto-btn" data-coin="sol">SOL</button>
-        </div>
-
-        <div class="wallet-info" id="walletInfo">
-          <p>Send the exact total to one of the wallet addresses below, based on the network you use:</p>
-          <div style="display:grid;gap:.6rem;margin-top:.75rem">
-            <div>
-              <p style="margin-bottom:.25rem;font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Bitcoin (BTC)</p>
-              <code>bc1qvw9699x8js6jexr5x846jc9eea404m0rwqdt5l</code>
+            <div class="form-row full">
+              <div class="form-group"><label>Street Address *</label><input type="text" id="address" required></div>
             </div>
-            <div>
-              <p style="margin-bottom:.25rem;font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Ethereum / USDC (ERC20)</p>
-              <code>0xD06F210375B68E40Ae5B82FA7DF36871b0DF867E</code>
+            <div class="form-row full">
+              <div class="form-group"><label>Address Line 2 (optional)</label><input type="text" id="address2" placeholder="Apartment, suite, unit, building, floor, etc."></div>
             </div>
-            <div>
-              <p style="margin-bottom:.25rem;font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Solana / USDC (Solana)</p>
-              <code>6VXmnP1iXkKbSdp7uEvpjZbuERD9hupvT2YbtPQeZdT4</code>
+            <div class="form-row">
+              <div class="form-group"><label>City *</label><input type="text" id="city" required></div>
+              <div class="form-group"><label>State / Province / Region</label><input type="text" id="state" placeholder="Required in some countries"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>ZIP / Postal Code *</label><input type="text" id="zip" required><small>Use your local postal format.</small></div>
+              <div class="form-group"><label>Order Notes (optional)</label><textarea id="notes" rows="2" placeholder="Special instructions, customs notes, or courier requests..."></textarea></div>
+            </div>
+            <div class="helper-pill-row">
+              <span class="helper-pill">Worldwide checkout enabled</span>
+              <span class="helper-pill">Discreet packaging available</span>
+              <span class="helper-pill">Customs notes supported</span>
             </div>
           </div>
-          <p style="margin-top:.75rem;font-size:.7rem;color:var(--text3)">After sending, include the transaction hash in the order notes. Your order ships once payment is confirmed. International customers can also add customs or courier notes here.</p>
+
+          <div class="form-section">
+            <h3>Payment Method</h3>
+            <p class="form-section-intro">Choose the payment route you prefer. Crypto is fastest, direct wallet is simple, and bank transfer is available for larger orders.</p>
+            <div class="payment-options">
+              <label class="payment-option selected" data-method="crypto">
+                <input type="radio" name="payment" value="crypto" checked>
+                <div class="payment-radio"></div>
+                <div class="payment-details">
+                  <strong>Cryptocurrency Gateway</strong>
+                  <span>Bitcoin, Ethereum, USDC, Solana. Fastest international checkout flow.</span>
+                </div>
+              </label>
+              <label class="payment-option" data-method="wallet">
+                <input type="radio" name="payment" value="wallet">
+                <div class="payment-radio"></div>
+                <div class="payment-details">
+                  <strong>Direct Wallet Transfer</strong>
+                  <span>Send payment directly to Titan’s BTC, ERC20, or Solana wallets.</span>
+                </div>
+              </label>
+              <label class="payment-option" data-method="bank">
+                <input type="radio" name="payment" value="bank">
+                <div class="payment-radio"></div>
+                <div class="payment-details">
+                  <strong>Bank Transfer</strong>
+                  <span>Best for larger invoice-style orders. Instructions sent by email after submission.</span>
+                </div>
+              </label>
+            </div>
+
+            <div class="crypto-options show" id="cryptoOptions">
+              <button class="crypto-btn selected" data-coin="btc">BTC</button>
+              <button class="crypto-btn" data-coin="eth">ETH</button>
+              <button class="crypto-btn" data-coin="usdcsol">USDC</button>
+              <button class="crypto-btn" data-coin="sol">SOL</button>
+            </div>
+
+            <div class="wallet-info" id="walletInfo">
+              <p>Send the exact total to one of the wallet addresses below, based on the network you use:</p>
+              <div style="display:grid;gap:.6rem;margin-top:.75rem">
+                <div>
+                  <p style="margin-bottom:.25rem;font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Bitcoin (BTC)</p>
+                  <code>bc1qvw9699x8js6jexr5x846jc9eea404m0rwqdt5l</code>
+                </div>
+                <div>
+                  <p style="margin-bottom:.25rem;font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Ethereum / USDC (ERC20)</p>
+                  <code>0xD06F210375B68E40Ae5B82FA7DF36871b0DF867E</code>
+                </div>
+                <div>
+                  <p style="margin-bottom:.25rem;font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Solana / USDC (Solana)</p>
+                  <code>6VXmnP1iXkKbSdp7uEvpjZbuERD9hupvT2YbtPQeZdT4</code>
+                </div>
+              </div>
+              <p style="margin-top:.75rem;font-size:.7rem;color:var(--text3)">After sending, include the transaction hash in the order notes. Your order ships once payment is confirmed. International customers can also add customs or courier notes here.</p>
+            </div>
+
+            <div class="bank-info" id="bankInfo">
+              <p>Bank transfer details will be emailed to you after placing your order. Please allow 1-3 business days for processing once payment is received.</p>
+            </div>
+
+            <p class="payment-help">If you need invoice help before paying, contact <a href="mailto:support@titanpeptidelab.com">support@titanpeptidelab.com</a>. We can confirm delivery notes for international shipments by email after submission.</p>
+          </div>
+
+          <button class="btn-place" id="placeOrderBtn">Submit Secure Order</button>
         </div>
 
-        <div class="bank-info" id="bankInfo">
-          <p>Bank transfer details will be emailed to you after placing your order. Please allow 1-3 business days for processing once payment is received.</p>
+        <div class="checkout-sidebar">
+          <div class="order-summary" id="orderSummaryCheckout">
+            <h4>Order Summary</h4>
+            <div id="orderLines"></div>
+            <div class="summary-note">Free shipping is applied automatically on orders over $150. For worldwide shipments, add any customs, courier, or delivery notes before submitting.</div>
+          </div>
+          <div class="sidebar-card">
+            <h5>Worldwide delivery</h5>
+            <ul class="sidebar-list">
+              <li><span>•</span><div>International orders are welcome. Enter your destination exactly as your local courier expects it.</div></li>
+              <li><span>•</span><div>Use order notes for customs wording, building access, or local delivery instructions.</div></li>
+              <li><span>•</span><div>Tracking and order confirmation are sent by email after your order is submitted.</div></li>
+            </ul>
+          </div>
+          <div class="sidebar-card">
+            <h5>Need help before checkout?</h5>
+            <p>Questions about international delivery, payment, or bulk orders? Email <a href="mailto:support@titanpeptidelab.com">support@titanpeptidelab.com</a> and Titan support will help you finalize the order.</p>
+          </div>
         </div>
       </div>
-
-      <div class="order-summary" id="orderSummaryCheckout">
-        <h4>Order Summary</h4>
-        <div id="orderLines"></div>
-        <div class="summary-note">Free shipping is applied automatically on orders over $150. For worldwide shipments, add any customs, courier, or delivery notes before submitting.</div>
-      </div>
-
-      <button class="btn-place" id="placeOrderBtn">Submit Secure Order</button>
     </div>
 
     <div class="order-success" id="orderSuccess">
@@ -921,7 +976,13 @@ document.getElementById("placeOrderBtn").addEventListener("click", async () => {
     `Date: ${new Date().toISOString()}`,
     `Customer: ${document.getElementById("firstName").value} ${document.getElementById("lastName").value}`,
     `Email: ${document.getElementById("email").value}`,
-    `Address: ${document.getElementById("address").value}, ${document.getElementById("city").value}, ${document.getElementById("state").value} ${document.getElementById("zip").value}`,
+    document.getElementById("phone")?.value ? `Phone: ${document.getElementById("phone").value}` : null,
+    document.getElementById("company")?.value ? `Company/Lab: ${document.getElementById("company").value}` : null,
+    `Address 1: ${document.getElementById("address").value}`,
+    document.getElementById("address2")?.value ? `Address 2: ${document.getElementById("address2").value}` : null,
+    `City: ${document.getElementById("city").value}`,
+    document.getElementById("state").value ? `State/Province/Region: ${document.getElementById("state").value}` : null,
+    `ZIP / Postal Code: ${document.getElementById("zip").value}`,
     `Country: ${document.getElementById("country").value}`,
     `Payment: ${payment}${payment==="crypto" ? " ("+selectedCrypto+")" : ""}`,
     `Notes: ${document.getElementById("notes").value || "None"}`,
