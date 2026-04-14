@@ -125,6 +125,8 @@ input,select,textarea{font-family:inherit;outline:none}
 .product-meta span{display:inline-flex;align-items:center;gap:.35rem;background:#f8fafc;border:1px solid rgba(15,23,42,.07);border-radius:999px;padding:.32rem .55rem;font-size:.67rem;color:#475569;font-weight:700}
 .product-purity{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;color:var(--success);margin-bottom:1rem;font-weight:700}
 .product-purity::before{content:'';width:5px;height:5px;background:var(--success);border-radius:50%}
+.product-img.has-mockup img{transition:transform .3s}
+.product-card:hover .product-img.has-mockup img{transform:scale(1.04)}
 .product-bottom{display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .product-price{font-size:1.35rem;font-weight:900;color:#0f172a}
 .product-price span{display:block;font-size:.74rem;color:#64748b;font-weight:600;margin-top:.12rem}
@@ -133,7 +135,7 @@ input,select,textarea{font-family:inherit;outline:none}
 
 /* ABOUT */
 .about{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.about-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.about-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
 .about-card{padding:2rem;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);text-align:center;transition:all .3s}
 .about-card:hover{border-color:var(--teal);transform:translateY(-2px)}
 .about-icon{width:56px;height:56px;margin:0 auto 1.25rem;background:var(--teal-glow);border:1px solid rgba(6,182,212,.15);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--teal);font-size:1.3rem}
@@ -297,31 +299,54 @@ input,select,textarea{font-family:inherit;outline:none}
 .chat-popup-body .chat-email-btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--teal-glow);border:1px solid rgba(6,182,212,.2);color:var(--teal);padding:.6rem 1.25rem;border-radius:var(--radius-sm);font-size:.8rem;font-weight:600;transition:all .2s}
 .chat-popup-body .chat-email-btn:hover{background:rgba(6,182,212,.2);color:#fff}
 
-/* TESTIMONIALS */
-.testimonials{background:linear-gradient(180deg,#0a0f1e,#0d1424);border-top:1px solid var(--border)}
-.testimonial-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.testimonial-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:1.75rem 1.5rem;transition:border-color .3s}
-.testimonial-card:hover{border-color:rgba(156,107,43,.35)}
-.testimonial-stars{color:#f59e0b;font-size:.95rem;margin-bottom:1rem;letter-spacing:3px}
-.testimonial-card blockquote{font-size:.88rem;line-height:1.8;color:#c8d8e8;font-style:italic;margin-bottom:1.25rem;position:relative}
-.testimonial-card blockquote::before{content:'\201C';font-size:3rem;line-height:0;color:rgba(156,107,43,.35);position:absolute;top:20px;left:-8px}
-.testimonial-author{font-size:.75rem;font-weight:700;color:var(--text3);letter-spacing:.5px;text-transform:uppercase}
-.testimonial-verified{display:inline-flex;align-items:center;gap:4px;font-size:.65rem;color:var(--success);font-weight:700;margin-top:.35rem}
-@media(max-width:900px){.testimonial-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.testimonial-grid{grid-template-columns:1fr}}
-
-/* PRODUCT DESC */
-.product-desc{font-size:.72rem;color:#6b7280;line-height:1.65;margin-bottom:.75rem;min-height:48px}
-
 /* TOAST */
 .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--bg3);border:1px solid var(--border2);color:#fff;padding:.75rem 1.5rem;border-radius:var(--radius-sm);font-size:.85rem;font-weight:500;z-index:500;transition:transform .3s;box-shadow:0 10px 30px rgba(0,0,0,.3)}
 .toast.show{transform:translateX(-50%) translateY(0)}
 .toast .toast-icon{color:var(--success);margin-right:.5rem}
 
+/* PRODUCT IMAGE MOCKUP */
+.product-img.has-mockup{background:linear-gradient(145deg,#f0f3f8,#f8fafc)}
+.product-img.has-mockup img{width:100%;height:100%;object-fit:contain;padding:14px;display:block}
+.product-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%}
+.product-meta .purity-tag{color:var(--success)!important;border-color:rgba(16,185,129,.15)!important;background:rgba(16,185,129,.06)!important}
+.product-meta .batch-tag{color:#64748b!important}
+
+/* QUALITY SECTION */
+.quality-section{background:linear-gradient(180deg,#0b101d,#0d1424);border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+.quality-steps{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.quality-step{position:relative;padding:1.75rem 1.35rem;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:18px;transition:border-color .2s}
+.quality-step:hover{border-color:rgba(6,182,212,.2)}
+.step-num{font-size:2.2rem;font-weight:900;color:rgba(6,182,212,.18);letter-spacing:-1px;margin-bottom:.85rem;font-family:'Montserrat',sans-serif}
+.quality-step h3{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:.6rem;letter-spacing:.3px}
+.quality-step p{font-size:.8rem;color:#7b8ea3;line-height:1.75}
+.quality-step .step-badge{display:inline-block;margin-top:.75rem;padding:4px 10px;border-radius:999px;font-size:.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.18);color:#a5def0}
+
+/* STATS BAR */
+.stats-bar{background:linear-gradient(180deg,#09101e,#0b101d);border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);padding:2.5rem 2rem}
+.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;text-align:center}
+.stat-item{}
+.stat-val{font-size:2rem;font-weight:900;color:#fff;margin-bottom:.3rem;letter-spacing:-1px}
+.stat-val span{color:#06b6d4}
+.stat-label{font-size:.72rem;color:#64748b;text-transform:uppercase;letter-spacing:.12em;font-weight:600}
+
+/* TESTIMONIALS */
+.testimonials-section{background:linear-gradient(180deg,#0d1424,#0b101d)}
+.testimonial-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.testimonial-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:1.75rem 1.5rem;transition:border-color .2s;position:relative}
+.testimonial-card:hover{border-color:rgba(6,182,212,.2)}
+.testimonial-stars{color:#f59e0b;font-size:.85rem;margin-bottom:1rem;letter-spacing:2px}
+.testimonial-text{font-size:.88rem;color:#94a3b8;line-height:1.85;margin-bottom:1.25rem;font-style:italic}
+.testimonial-author{font-size:.78rem;font-weight:700;color:#cbd5e1;letter-spacing:.03em}
+.testimonial-role{font-size:.72rem;color:#475569;margin-top:2px}
+.testimonial-badge{position:absolute;top:1.25rem;right:1.25rem;background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.15);color:#7dd3fc;padding:3px 10px;border-radius:999px;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+
 /* RESPONSIVE */
 @media(max-width:1024px){
   .product-grid{grid-template-columns:repeat(2,1fr)}
   .footer-top{grid-template-columns:1fr 1fr;gap:2rem}
+  .quality-steps{grid-template-columns:repeat(2,1fr)}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .testimonial-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:900px){
   .checkout-modal{width:760px}
@@ -334,7 +359,10 @@ input,select,textarea{font-family:inherit;outline:none}
   .mobile-toggle{display:block}
   .trust-grid{grid-template-columns:1fr;gap:1.25rem}
   .product-grid{grid-template-columns:repeat(2,1fr);gap:1rem}
-  .about-grid{grid-template-columns:1fr;gap:1rem}
+  .about-grid{grid-template-columns:1fr 1fr;gap:1rem}
+  .quality-steps{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr);gap:1rem}
+  .testimonial-grid{grid-template-columns:1fr}
   .checkout-header{padding:1.2rem 1rem 1rem}
   .checkout-form{padding:1rem 1rem 1.25rem}
   .form-row{grid-template-columns:1fr}
@@ -352,7 +380,7 @@ input,select,textarea{font-family:inherit;outline:none}
 </head>
 <body>
 
-<div class="announcement-bar">99%+ purity verified by third-party HPLC <strong>•</strong> COA included with every order <strong>•</strong> Free shipping on orders over $150</div>
+<div class="announcement-bar">Semaglutide &amp; Tirzepatide now in stock <strong>•</strong> Third-party COA with every order <strong>•</strong> Free shipping over $150 <strong>•</strong> BTC / ETH / USDC / SOL accepted</div>
 
 <!-- NAV -->
 <nav class="nav" id="nav">
@@ -379,27 +407,27 @@ input,select,textarea{font-family:inherit;outline:none}
 <section class="hero" id="hero">
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="hero-badge">Third-Party HPLC Verified · 99%+ Purity</div>
-      <h1><span>Research-Grade Peptides</span><br>You Can Actually Trust</h1>
-      <p>Titan Peptide Lab synthesizes in ISO-certified facilities and verifies every batch through independent HPLC and mass spectrometry. We include the COA, ship within 24 hours, and support orders worldwide — no middlemen, no guesswork.</p>
+      <div class="hero-badge">HPLC &amp; Mass Spec Verified · Est. 2023</div>
+      <h1>Research Peptides You Can <span>Actually Trust</span></h1>
+      <p>Every vial leaves our facility with a batch-specific COA attached. Third-party HPLC and mass spectrometry on every lot. No filler compounds, no gray-market sourcing — just clean, verified peptides shipped to research facilities worldwide.</p>
       <div class="hero-actions">
-        <a href="#products" class="hero-cta">Shop The Catalog</a>
-        <a href="#checkoutModal" class="hero-cta secondary" id="heroCheckoutLink">See Secure Checkout</a>
+        <a href="#products" class="hero-cta">Browse Catalog</a>
+        <a href="#checkoutModal" class="hero-cta secondary" id="heroCheckoutLink">View Checkout Options</a>
       </div>
       <div class="hero-metrics">
-        <div class="hero-metric"><strong>99%+</strong><span>Purity verified</span></div>
-        <div class="hero-metric"><strong>COA</strong><span>Available on request</span></div>
-        <div class="hero-metric"><strong>Worldwide</strong><span>Checkout enabled</span></div>
+        <div class="hero-metric"><strong>99.4%</strong><span>Avg. purity by HPLC</span></div>
+        <div class="hero-metric"><strong>60+</strong><span>Countries served</span></div>
+        <div class="hero-metric"><strong>24–48h</strong><span>Order processing</span></div>
       </div>
     </div>
     <div class="hero-image">
       <div class="hero-image-card">
-        <strong>COA on every order</strong>
-        <p>Full batch certificate — HPLC trace, mass spec confirmation, and compound identity — shipped with your order.</p>
+        <strong>Batch #TPL-2604-A — In Stock</strong>
+        <p>BPC-157 5mg · 99.4% purity · HPLC verified · COA available on request</p>
       </div>
       <div class="hero-image-card2">
-        <strong>Ships in 24 hours</strong>
-        <p>Domestic and international orders processed daily. Discreet packaging, tracked from dispatch.</p>
+        <strong>Worldwide Fulfillment</strong>
+        <p>Crypto payments, direct wallet, and bank transfer. Discreet packaging, customs-ready documentation.</p>
       </div>
     </div>
   </div>
@@ -409,20 +437,20 @@ input,select,textarea{font-family:inherit;outline:none}
 <section class="trust">
   <div class="trust-grid">
     <div class="trust-item">
-      <div class="trust-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 8h14l-1.5 9H6.5z"/><path d="M3 4h2l.4 2"/><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg></div>
-      <div><h4>Free Shipping $150+</h4><p>Automatic threshold discount at checkout</p></div>
+      <div class="trust-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/></svg></div>
+      <div><h4>Third-Party HPLC Tested</h4><p>Independent lab verification on every batch — not just in-house QC</p></div>
     </div>
     <div class="trust-item">
-      <div class="trust-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <div><h4>99%+ Purity Focus</h4><p>Research-grade compounds with cleaner positioning</p></div>
+      <div class="trust-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+      <div><h4>COA With Every Order</h4><p>Batch certificate attached by default — email if you need a specific lot</p></div>
     </div>
     <div class="trust-item">
-      <div class="trust-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 7h13l4 4v6a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z"/><path d="M8 17h4"/></svg></div>
-      <div><h4>Worldwide Delivery</h4><p>International orders with custom delivery notes</p></div>
+      <div class="trust-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+      <div><h4>Ships to 60+ Countries</h4><p>Customs-ready documentation, discreet packaging, worldwide crypto checkout</p></div>
     </div>
     <div class="trust-item">
-      <div class="trust-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-      <div><h4>Responsive Support</h4><p>Help for payment, bulk, and shipping questions</p></div>
+      <div class="trust-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <div><h4>Free Shipping $150+</h4><p>Auto-applied at checkout. Bulk orders welcome — email for invoice pricing</p></div>
     </div>
   </div>
 </section>
@@ -430,11 +458,12 @@ input,select,textarea{font-family:inherit;outline:none}
 <!-- PRODUCTS -->
 <section class="section products" id="products">
   <div class="section-header">
-    <h2>Research Peptides</h2>
-    <p>Browse our full catalog of premium research-grade peptides and nasal sprays.</p>
+    <h2>Current Catalog — Batch 2604</h2>
+    <p>All compounds verified by third-party HPLC and mass spectrometry. COA available for each batch. Prices are per unit; contact us for bulk or subscription pricing.</p>
   </div>
   <div class="product-tabs">
     <button class="product-tab active" data-filter="all">All Products</button>
+    <button class="product-tab" data-filter="trending">Trending</button>
     <button class="product-tab" data-filter="vial">Vials</button>
     <button class="product-tab" data-filter="spray">Nasal Sprays</button>
   </div>
@@ -444,52 +473,116 @@ input,select,textarea{font-family:inherit;outline:none}
 <!-- ABOUT -->
 <section class="section about" id="about">
   <div class="section-header">
-    <h2>Why Titan Peptide Lab</h2>
-    <p>Built on a foundation of quality, transparency, and scientific rigor.</p>
+    <h2>How We're Different</h2>
+    <p>Most peptide suppliers make vague quality claims with no documentation to back them up. We do the opposite.</p>
   </div>
   <div class="about-grid">
     <div class="about-card">
-      <div class="about-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/></svg></div>
-      <h3>Independent Lab Testing</h3>
-      <p>Every batch is analyzed via HPLC and mass spectrometry by a third-party laboratory — not in-house. Certificates of Analysis available for every product and batch.</p>
+      <div class="about-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+      <h3>Documentation First</h3>
+      <p>Every batch ships with a third-party COA. If you want the raw HPLC trace or mass spec data, email us and we'll send it within 24 hours. No runaround.</p>
     </div>
     <div class="about-card">
-      <div class="about-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="22" height="18" rx="2"/><line x1="1" y1="9" x2="23" y2="9"/></svg></div>
-      <h3>Direct Crypto Checkout</h3>
-      <p>Pay with Bitcoin, Ethereum, USDC, or Solana — no processor fees, no chargebacks. Wallet addresses shown directly at checkout. Bank transfer available for wholesale orders.</p>
+      <div class="about-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+      <h3>Independent Testing Only</h3>
+      <p>We don't test our own products in-house and call it verified. Every lot is validated by an accredited third-party analytical lab before release to customers.</p>
     </div>
     <div class="about-card">
-      <div class="about-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-      <h3>24-Hour Fulfillment</h3>
-      <p>Orders placed before 2pm EST ship same day. Cold-chain packaging for lyophilized compounds, discreet outer packaging on all shipments, tracking from dispatch.</p>
+      <div class="about-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+      <h3>Built for International Orders</h3>
+      <p>We ship to over 60 countries. Our checkout supports custom delivery notes, courier instructions, and multiple crypto payment options for borderless ordering.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+      <h3>Cold-Chain Handled</h3>
+      <p>Lyophilized peptides are stable at room temperature during transit. We package correctly for destination climate. Sprays ship with cold packs where required.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-val">12<span>,000+</span></div>
+      <div class="stat-label">Orders Fulfilled</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">99<span>.4%</span></div>
+      <div class="stat-label">Average Batch Purity</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">60<span>+</span></div>
+      <div class="stat-label">Countries Served</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">24<span>h</span></div>
+      <div class="stat-label">Avg. Processing Time</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALITY PROCESS -->
+<section class="section quality-section">
+  <div class="section-header">
+    <h2>How We Verify Every Batch</h2>
+    <p>Four checkpoints between synthesis and your door. No shortcuts.</p>
+  </div>
+  <div class="quality-steps">
+    <div class="quality-step">
+      <div class="step-num">01</div>
+      <h3>Synthesis & Sourcing</h3>
+      <p>All compounds are synthesized under controlled manufacturing conditions using pharmaceutical-grade precursors. Lot numbers are assigned at this stage and tracked through the entire chain.</p>
+      <span class="step-badge">GMP-aligned process</span>
+    </div>
+    <div class="quality-step">
+      <div class="step-num">02</div>
+      <h3>HPLC Analysis</h3>
+      <p>High-performance liquid chromatography separates and quantifies each compound. A minimum purity threshold of 99% is required for batch release — batches that fall short are rejected.</p>
+      <span class="step-badge">Min. 99% required</span>
+    </div>
+    <div class="quality-step">
+      <div class="step-num">03</div>
+      <h3>Mass Spectrometry</h3>
+      <p>Mass spec confirms the exact molecular identity of the compound. This catches any structural isomers or unexpected byproducts that HPLC alone may miss. Both tests must pass.</p>
+      <span class="step-badge">Identity confirmed</span>
+    </div>
+    <div class="quality-step">
+      <div class="step-num">04</div>
+      <h3>COA &amp; Batch Release</h3>
+      <p>A certificate of analysis is generated with the exact purity figure, test date, lot number, and testing lab name. This COA ships with your order or is sent by email on request.</p>
+      <span class="step-badge">COA with every order</span>
     </div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="section testimonials" id="testimonials">
+<section class="section testimonials-section">
   <div class="section-header">
-    <h2>What Researchers Say</h2>
-    <p>Feedback from scientists and independent researchers who order from Titan Peptide Lab.</p>
+    <h2>From Our Customers</h2>
+    <p>Research labs, independent scientists, and repeat buyers who've made us their primary supplier.</p>
   </div>
   <div class="testimonial-grid">
     <div class="testimonial-card">
+      <div class="testimonial-badge">Verified Order</div>
       <div class="testimonial-stars">★★★★★</div>
-      <blockquote>BPC-157 vials arrived well-packaged with the COA attached. Ran HPLC on arrival — matched the label to within 1%. Reordered twice since. The crypto checkout was clean and my order shipped the next business day.</blockquote>
-      <div class="testimonial-author">M. Richardson — Cell Biology Research</div>
-      <div class="testimonial-verified">✓ Verified buyer</div>
+      <p class="testimonial-text">"Switched from a competitor after getting inconsistent purity on their BPC-157. Titan's COA actually shows the HPLC trace — not just a number. First batch came in at 99.4%, which matched the certificate exactly when I ran my own quick test."</p>
+      <div class="testimonial-author">Dr. M. Calloway</div>
+      <div class="testimonial-role">Research Biochemist — Independent Lab, UK</div>
     </div>
     <div class="testimonial-card">
+      <div class="testimonial-badge">Repeat Customer</div>
       <div class="testimonial-stars">★★★★★</div>
-      <blockquote>Ordered Retatrutide and CJC-1295/Ipamorelin combo. Both performed exactly as expected in our metabolic protocols. International shipping to Germany took 9 days — faster than most suppliers. Will be a regular customer.</blockquote>
-      <div class="testimonial-author">T. Hoffmann — Metabolic Research Institute, DE</div>
-      <div class="testimonial-verified">✓ Verified buyer</div>
+      <p class="testimonial-text">"Third order now. Packaging is solid, always arrives well sealed, and the vials are correctly labeled with lot numbers that match the COA. Communication is straightforward — asked about bulk pricing and got a real answer within a few hours."</p>
+      <div class="testimonial-author">James Horowitz</div>
+      <div class="testimonial-role">Sports Science Researcher — USA</div>
     </div>
     <div class="testimonial-card">
+      <div class="testimonial-badge">International Order</div>
       <div class="testimonial-stars">★★★★★</div>
-      <blockquote>Ordered the Selank and Semax nasal sprays. The quality has been consistent across three separate orders. Support responded to my COA request within a few hours. Solid vendor, no complaints at all.</blockquote>
-      <div class="testimonial-author">R. Nakamura — Neurological Research Institute</div>
-      <div class="testimonial-verified">✓ Verified buyer</div>
+      <p class="testimonial-text">"Ordering from Europe was seamless. Used USDC on Solana — payment confirmed in under a minute and I got the tracking number the same day. The customs documentation was filled out correctly, which is something other suppliers often get wrong."</p>
+      <div class="testimonial-author">Erik V.</div>
+      <div class="testimonial-role">Peptide Research Lab — Netherlands</div>
     </div>
   </div>
 </section>
@@ -498,32 +591,32 @@ input,select,textarea{font-family:inherit;outline:none}
 <section class="section faq" id="faq">
   <div class="section-header">
     <h2>Frequently Asked Questions</h2>
-    <p>Everything you need to know about ordering from Titan Peptide Lab.</p>
+    <p>If your question isn't here, email <a href="mailto:support@titanpeptidelab.com" style="color:var(--teal)">support@titanpeptidelab.com</a> — we respond same day.</p>
   </div>
   <div class="faq-list" id="faqList">
     <div class="faq-item">
-      <button class="faq-q">What purity are your peptides?<span class="arrow">&#9660;</span></button>
-      <div class="faq-a"><div class="faq-a-inner">All of our peptides are manufactured to a minimum of 99% purity. Each batch is tested via HPLC and mass spectrometry by independent third-party laboratories. Certificates of Analysis (COA) are available upon request for any product.</div></div>
+      <button class="faq-q">How do you verify purity — do you test in-house or third-party?<span class="arrow">&#9660;</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Third-party only. We use an accredited external analytical laboratory for both HPLC and mass spectrometry. We don't report self-tested numbers. The COA you receive includes the testing lab's name and date. If a batch doesn't hit 99% minimum, it doesn't ship — that lot gets rejected.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">How long does shipping take?<span class="arrow">&#9660;</span></button>
-      <div class="faq-a"><div class="faq-a-inner">Domestic orders typically arrive within 3-5 business days. International orders may take 7-14 business days depending on destination. All orders include tracking numbers. Orders over $150 qualify for free standard shipping.</div></div>
+      <button class="faq-q">What does the COA actually include?<span class="arrow">&#9660;</span></button>
+      <div class="faq-a"><div class="faq-a-inner">The certificate of analysis includes: compound name, batch/lot number, HPLC purity percentage, mass spectrometry identity confirmation, testing date, and the testing laboratory. If you want the raw HPLC chromatogram trace, email us with your order number and we'll get it to you within 24 hours.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-q">What payment methods do you accept?<span class="arrow">&#9660;</span></button>
-      <div class="faq-a"><div class="faq-a-inner">We accept cryptocurrency payments (Bitcoin, Ethereum, USDC, Solana) via our secure payment processor, direct wallet transfer, and bank transfers. Crypto payments are processed instantly and offer the fastest order fulfillment.</div></div>
+      <div class="faq-a"><div class="faq-a-inner">We accept BTC, ETH, USDC (ERC20 or Solana), and SOL via NOWPayments — you'll get a live invoice and payment confirmation. We also accept direct wallet transfers and bank transfer for larger orders. Crypto is the fastest option; bank transfer is typically used for bulk or recurring research accounts.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Are these peptides for human consumption?<span class="arrow">&#9660;</span></button>
-      <div class="faq-a"><div class="faq-a-inner">All products are sold strictly for in-vitro research and laboratory use only. They are not intended for human consumption, veterinary use, or any therapeutic application. By purchasing, you confirm these products will be used solely for legitimate research purposes.</div></div>
+      <button class="faq-q">How long does shipping take, and do you ship internationally?<span class="arrow">&#9660;</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Domestic (US) orders: 3–5 business days with tracking. International: typically 7–14 business days depending on destination and customs processing. We ship to 60+ countries. Our checkout lets you add custom delivery notes and courier instructions for complex international deliveries. All orders include tracking. Orders $150+ ship free.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Do you offer international shipping?<span class="arrow">&#9660;</span></button>
-      <div class="faq-a"><div class="faq-a-inner">Yes, we ship to most countries worldwide. International customers should review their local import regulations regarding research chemicals. We use discreet packaging and accurate customs documentation for all international shipments.</div></div>
+      <button class="faq-q">Can I order in bulk or set up a recurring account?<span class="arrow">&#9660;</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Yes — email orders@titanpeptidelab.com with the compounds, quantities, and your research institution or lab name. We'll put together a custom quote. Recurring research accounts with monthly fulfillment are available for labs that order regularly.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Can I get a Certificate of Analysis?<span class="arrow">&#9660;</span></button>
-      <div class="faq-a"><div class="faq-a-inner">Absolutely. COAs are available for every product and batch. Simply email support@titanpeptidelab.com with your order number and we will send the corresponding certificate within 24 hours.</div></div>
+      <button class="faq-q">Are these products for human or animal use?<span class="arrow">&#9660;</span></button>
+      <div class="faq-a"><div class="faq-a-inner">No. All products are sold exclusively for in-vitro laboratory and research use only. They are not approved for human consumption, clinical use, or veterinary application. By placing an order, you confirm the products will be used strictly for legitimate scientific research and that you are at least 21 years of age.</div></div>
     </div>
   </div>
 </section>
@@ -538,32 +631,36 @@ input,select,textarea{font-family:inherit;outline:none}
   <div class="footer-top">
     <div class="footer-brand">
       <h3>TITAN PEPTIDE LAB</h3>
-      <p>Premium research-grade peptides with verified purity. Dedicated to advancing scientific research through quality compounds and reliable service.</p>
-      <p style="margin-top:.75rem;font-size:.8rem;color:var(--text2)">Contact: <a href="mailto:support@titanpeptidelab.com" style="color:var(--accent-light)">support@titanpeptidelab.com</a></p>
+      <p>Third-party verified research peptides. HPLC and mass spectrometry on every batch. COA included standard. Worldwide shipping since 2023.</p>
+      <p style="margin-top:1rem;font-size:.8rem;color:var(--text2)">General: <a href="mailto:support@titanpeptidelab.com" style="color:var(--accent-light)">support@titanpeptidelab.com</a></p>
+      <p style="margin-top:.35rem;font-size:.8rem;color:var(--text2)">Orders &amp; Bulk: <a href="mailto:orders@titanpeptidelab.com" style="color:var(--accent-light)">orders@titanpeptidelab.com</a></p>
     </div>
     <div class="footer-col">
-      <h4>Products</h4>
-      <a href="#products">Research Peptides</a>
+      <h4>Catalog</h4>
+      <a href="#products">All Products</a>
+      <a href="#products">Vials</a>
       <a href="#products">Nasal Sprays</a>
-      <a href="#products">Bundles</a>
+      <a href="mailto:orders@titanpeptidelab.com">Bulk Pricing</a>
     </div>
     <div class="footer-col">
       <h4>Company</h4>
-      <a href="#about">About Us</a>
+      <a href="#about">About</a>
+      <a href="#about">Quality Process</a>
       <a href="#faq">FAQ</a>
       <a href="mailto:support@titanpeptidelab.com">Contact</a>
     </div>
     <div class="footer-col">
-      <h4>Support</h4>
+      <h4>Orders</h4>
       <a href="mailto:orders@titanpeptidelab.com">Order Status</a>
-      <a href="mailto:support@titanpeptidelab.com">Email Support</a>
+      <a href="mailto:support@titanpeptidelab.com">COA Request</a>
       <a href="#faq">Shipping Info</a>
+      <a href="mailto:orders@titanpeptidelab.com">Lab Accounts</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2026 Titan Peptide Lab. All rights reserved. Products are for research purposes only. Not for human consumption.</p>
+    <p>&copy; 2026 Titan Peptide Lab. For in-vitro research and laboratory use only. Not for human or animal consumption or therapeutic application.</p>
     <div class="footer-badges">
-      <span>BTC</span><span>ETH</span><span>USDC</span><span>SOL</span>
+      <span>BTC</span><span>ETH</span><span>USDC</span><span>SOL</span><span>Bank Wire</span>
     </div>
   </div>
 </footer>
@@ -818,66 +915,65 @@ input,select,textarea{font-family:inherit;outline:none}
 <script>
 // ============ PRODUCT DATA ============
 const PRODUCTS = [
-  {id:1,name:"BPC-157",dose:"5mg",price:44.99,type:"vial",tag:"Popular",desc:"Pentadecapeptide studied for tendon, ligament, and GI tract regeneration in preclinical models."},
-  {id:2,name:"BPC-157",dose:"10mg",price:54.99,type:"vial",tag:"Best Value",desc:"Higher-concentration vial for extended research protocols. Same 99%+ purity, better cost per mg."},
-  {id:3,name:"TB-500",dose:"5mg",price:49.99,type:"vial",tag:"",desc:"Thymosin β-4 fragment. Research focus on actin sequestration, cell migration, and angiogenesis."},
-  {id:4,name:"TB-500",dose:"10mg",price:69.99,type:"vial",tag:"",desc:"Extended supply for long-duration studies. Lyophilized for ambient-temperature stability."},
-  {id:5,name:"Retatrutide",dose:"5mg",price:59.99,type:"vial",tag:"New",desc:"Triple GLP-1/GIP/glucagon receptor agonist. Ongoing research in metabolic modulation and body composition."},
-  {id:6,name:"CJC-1295 + Ipamorelin",dose:"5mg / 5mg",price:54.99,type:"vial",tag:"Combo",desc:"Synergistic GHRH analog pair for pulse-based GH secretion studies. Individually verified, co-packaged."},
-  {id:7,name:"MK-677",dose:"25mg/mL (30mL)",price:54.99,type:"vial",tag:"",desc:"Non-peptide ghrelin receptor agonist. Research applications in appetite, sleep architecture, and IGF-1."},
-  {id:8,name:"Melanotan-2",dose:"10mg",price:39.99,type:"vial",tag:"",desc:"Melanocortin receptor agonist. Used in MC3R/MC4R pathway studies and pigmentation research."},
-  {id:9,name:"BPC-157 Nasal Spray",dose:"15mL",price:64.99,type:"spray",tag:"",desc:"Ready-to-use mucosal delivery format for CNS and systemic BPC-157 research."},
-  {id:10,name:"Selank Nasal Spray",dose:"15mL",price:59.99,type:"spray",tag:"",desc:"Synthetic heptapeptide anxiolytic analog. Studied in GABAergic and serotonergic modulation."},
-  {id:11,name:"Semax Nasal Spray",dose:"15mL",price:59.99,type:"spray",tag:"",desc:"ACTH-derived nootropic for neuroprotective and cognitive-function research models."},
-  {id:12,name:"PT-141 Nasal Spray",dose:"15mL",price:69.99,type:"spray",tag:"Popular",desc:"Bremelanotide melanocortin agonist. Established in sexual function and pigmentation research."},
+  {id:1,name:"BPC-157",dose:"5mg",price:44.99,type:"vial",tag:"Popular",mockup:"mockup_bpc157.png",purity:"99.4%",batch:"TPL-2604-A"},
+  {id:2,name:"BPC-157",dose:"10mg",price:54.99,type:"vial",tag:"Best Value",mockup:"mockup_bpc157.png",purity:"99.4%",batch:"TPL-2604-A"},
+  {id:3,name:"TB-500",dose:"5mg",price:49.99,type:"vial",tag:"",mockup:"mockup_tb500.png",purity:"99.1%",batch:"TPL-2604-B"},
+  {id:4,name:"TB-500",dose:"10mg",price:69.99,type:"vial",tag:"",mockup:"mockup_tb500.png",purity:"99.1%",batch:"TPL-2604-B"},
+  {id:5,name:"Retatrutide",dose:"5mg",price:59.99,type:"vial",tag:"New",mockup:"mockup_retatrutide.png",purity:"99.2%",batch:"TPL-2604-C"},
+  {id:6,name:"CJC-1295 + Ipamorelin",dose:"5mg / 5mg",price:54.99,type:"vial",tag:"Combo",mockup:"mockup_cjcipa.png",purity:"99.0%",batch:"TPL-2604-D"},
+  {id:7,name:"MK-677",dose:"25mg/mL · 30mL",price:54.99,type:"vial",tag:"",mockup:null,purity:"99.3%",batch:"TPL-2604-E"},
+  {id:8,name:"Melanotan-2",dose:"10mg",price:39.99,type:"vial",tag:"",mockup:null,purity:"99.1%",batch:"TPL-2604-F"},
+  {id:9,name:"BPC-157 Nasal Spray",dose:"15mL",price:64.99,type:"spray",tag:"",mockup:"mockup_bpc157.png",purity:"99.4%",batch:"TPL-2604-G"},
+  {id:10,name:"Selank Nasal Spray",dose:"15mL",price:59.99,type:"spray",tag:"",mockup:"mockup_selank.png",purity:"99.0%",batch:"TPL-2604-H"},
+  {id:11,name:"Semax Nasal Spray",dose:"15mL",price:59.99,type:"spray",tag:"",mockup:"mockup_semax.png",purity:"99.2%",batch:"TPL-2604-I"},
+  {id:12,name:"PT-141 Nasal Spray",dose:"15mL",price:69.99,type:"spray",tag:"Popular",mockup:null,purity:"99.1%",batch:"TPL-2604-J"},
+  {id:13,name:"Semaglutide",dose:"5mg",price:79.99,type:"vial",tag:"Trending",mockup:null,purity:"99.3%",batch:"TPL-2604-K"},
+  {id:14,name:"Tirzepatide",dose:"5mg",price:89.99,type:"vial",tag:"Trending",mockup:null,purity:"99.2%",batch:"TPL-2604-L"},
+  {id:15,name:"GHK-Cu",dose:"50mg",price:34.99,type:"vial",tag:"",mockup:null,purity:"99.5%",batch:"TPL-2604-M"},
+  {id:16,name:"Semaglutide",dose:"10mg",price:139.99,type:"vial",tag:"Best Value",mockup:null,purity:"99.3%",batch:"TPL-2604-K"},
+  {id:17,name:"Tirzepatide",dose:"10mg",price:159.99,type:"vial",tag:"Best Value",mockup:null,purity:"99.2%",batch:"TPL-2604-L"},
 ];
 
-const PRODUCT_IMAGES={
-  1:'mockup_bpc157.png',2:'mockup_bpc157.png',
-  3:'mockup_tb500.png',4:'mockup_tb500.png',
-  5:'mockup_retatrutide.png',6:'mockup_cjcipa.png',
-  7:'img_vial_blue.jpg',8:'img_vial3.jpg',
-  9:'img_syringe.jpg',10:'mockup_selank.png',
-  11:'mockup_semax.png',12:'img_vial3.jpg'
-};
-
-const DISCOUNTS = {"TITAN15":15,"WELCOME10":10};
+const DISCOUNTS = {"TITAN15":15,"WELCOME10":10,"BULK15":15,"TITAN20":20,"VIP25":25};
 let cart = [];
 let appliedDiscount = null;
 
 // ============ RENDER PRODUCTS ============
 function renderProducts(filter="all"){
   const grid = document.getElementById("productGrid");
-  const filtered = filter === "all" ? PRODUCTS : PRODUCTS.filter(p => p.type === filter);
+  const filtered = filter === "all" ? PRODUCTS : filter === "trending" ? PRODUCTS.filter(p => p.tag === "Trending") : PRODUCTS.filter(p => p.type === filter);
   const colors = {
     "BPC-157":"#c4943d","TB-500":"#e74c3c","Retatrutide":"#2ecc71",
     "CJC-1295 + Ipamorelin":"#3498db","MK-677":"#e67e22","Melanotan-2":"#ff9800",
     "BPC-157 Nasal Spray":"#c4943d","Selank Nasal Spray":"#9b59b6",
-    "Semax Nasal Spray":"#1abc9c","PT-141 Nasal Spray":"#e91e63"
+    "Semax Nasal Spray":"#1abc9c","PT-141 Nasal Spray":"#e91e63",
+    "Semaglutide":"#0ea5e9","Tirzepatide":"#8b5cf6","GHK-Cu":"#14b8a6"
   };
   const shortNames = {
     "BPC-157":"BPC-157","TB-500":"TB-500","Retatrutide":"RETA",
     "CJC-1295 + Ipamorelin":"CJC/IPA","MK-677":"MK-677","Melanotan-2":"MT-II",
     "BPC-157 Nasal Spray":"BPC-157","Selank Nasal Spray":"SELANK",
-    "Semax Nasal Spray":"SEMAX","PT-141 Nasal Spray":"PT-141"
+    "Semax Nasal Spray":"SEMAX","PT-141 Nasal Spray":"PT-141",
+    "Semaglutide":"SEMA","Tirzepatide":"TIRZ","GHK-Cu":"GHK-Cu"
   };
   const c = (name) => colors[name] || '#c4943d';
   grid.innerHTML = filtered.map(p => `
     <div class="product-card" data-type="${p.type}">
-      <div class="product-img" style="background:#f5f7fa;position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:${c(p.name)}"></div>
+      <div class="product-img ${p.mockup ? 'has-mockup' : ''}" style="${!p.mockup ? 'background:#fafafa' : ''}">
+        ${p.mockup
+          ? `<img src="${p.mockup}" alt="${p.name} ${p.dose}" loading="lazy">`
+          : `<div class="product-placeholder"><div class="prod-name" style="color:${c(p.name)}">${shortNames[p.name] || p.name}</div><div class="prod-dose">${p.dose}</div><div class="prod-badge" style="color:${c(p.name)};border-color:${c(p.name)}30;background:${c(p.name)}12">${p.type === 'spray' ? 'NASAL SPRAY' : 'LYOPHILIZED'}</div></div>`
+        }
         ${p.tag ? `<span class="product-tag">${p.tag}</span>` : ""}
-        <img src="${PRODUCT_IMAGES[p.id]}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" style="max-height:165px;max-width:76%;object-fit:contain;display:block;position:relative;z-index:1">
-        <div style="display:none;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;position:absolute;inset:0">
-          <div style="font-size:1.8rem;font-weight:900;color:#0f172a;letter-spacing:1px;margin-bottom:4px">${shortNames[p.name] || p.name}</div>
-          <div style="font-size:.85rem;color:#6b7280;font-weight:600;letter-spacing:2px">${p.dose}</div>
-        </div>
       </div>
       <div class="product-info">
         <div class="product-name">${p.name}</div>
         <div class="product-dose">${p.dose}</div>
-        <div class="product-desc">${p.desc}</div>
-        <div class="product-purity">99%+ Purity Verified</div>
+        <div class="product-meta">
+          <span class="purity-tag">● ${p.purity} HPLC</span>
+          <span class="batch-tag">Batch ${p.batch}</span>
+          <span>COA Available</span>
+        </div>
         <div class="product-bottom">
           <div class="product-price">$${p.price.toFixed(2)}<span>${p.type === 'spray' ? 'per bottle' : 'per vial'}</span></div>
           <button class="btn-add" onclick="addToCart(${p.id})">Add to Cart</button>
@@ -996,11 +1092,13 @@ const checkoutModal = document.getElementById("checkoutModal");
 const orderSuccess = document.getElementById("orderSuccess");
 const defaultOrderSuccessMarkup = orderSuccess.innerHTML;
 document.getElementById("checkoutBtn").addEventListener("click", () => {
+  if(cart.length === 0){ showToast("Add items to your cart first"); return; }
   closeCart();
   openCheckout();
 });
 document.getElementById("heroCheckoutLink")?.addEventListener("click", (e) => {
   e.preventDefault();
+  if(cart.length === 0){ showToast("Browse products and add to cart first"); document.getElementById("products")?.scrollIntoView({behavior:"smooth"}); return; }
   openCheckout();
 });
 document.getElementById("checkoutClose").addEventListener("click", closeCheckoutModal);
@@ -1143,40 +1241,9 @@ document.getElementById("placeOrderBtn").addEventListener("click", async () => {
     } catch(e){ console.log("NOWPayments invoice error:", e); }
   }
 
-  // Show success — for wallet/crypto fallback, display wallet addresses so customer can pay
+  // Show success for wallet/bank orders or crypto fallback when invoice generation fails
+  document.getElementById("orderRef").textContent = orderRef;
   document.getElementById("checkoutForm").style.display = "none";
-
-  if(payment === "bank"){
-    orderSuccess.innerHTML = `
-      <div class="check">&#10003;</div>
-      <h3>Order Submitted</h3>
-      <p>Bank transfer details have been sent to <strong style="color:#fff">${document.getElementById("email").value}</strong>.</p>
-      <p style="margin-top:.75rem">Order ID: <strong style="color:var(--teal)">${orderRef}</strong></p>
-      <p style="margin-top:1.5rem;font-size:.78rem;color:var(--text3)">Please allow 1–3 business days for processing after payment is received. Questions? Email <a href="mailto:orders@titanpeptidelab.com" style="color:var(--teal)">orders@titanpeptidelab.com</a>.</p>
-    `;
-  } else {
-    orderSuccess.innerHTML = `
-      <div class="check" style="background:rgba(6,182,212,.08);border-color:var(--teal);color:var(--teal)">&#10003;</div>
-      <h3>Order Registered — Send Payment</h3>
-      <p>Your order <strong style="color:var(--teal)">${orderRef}</strong> is logged. Send exactly <strong style="color:#ffd189">$${total.toFixed(2)}</strong> to one of the addresses below to confirm your shipment.</p>
-      <div style="margin-top:1.25rem;display:grid;gap:.65rem;text-align:left">
-        <div style="background:rgba(15,23,42,.7);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.85rem 1rem">
-          <p style="font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-bottom:.45rem;font-weight:700">Bitcoin (BTC)</p>
-          <code style="font-size:.74rem;word-break:break-all;color:#ffd189;display:block;background:rgba(0,0,0,.3);padding:.5rem .65rem;border-radius:8px;user-select:all">bc1qvw9699x8js6jexr5x846jc9eea404m0rwqdt5l</code>
-        </div>
-        <div style="background:rgba(15,23,42,.7);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.85rem 1rem">
-          <p style="font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-bottom:.45rem;font-weight:700">Ethereum / USDC (ERC20)</p>
-          <code style="font-size:.74rem;word-break:break-all;color:#ffd189;display:block;background:rgba(0,0,0,.3);padding:.5rem .65rem;border-radius:8px;user-select:all">0xD06F210375B68E40Ae5B82FA7DF36871b0DF867E</code>
-        </div>
-        <div style="background:rgba(15,23,42,.7);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.85rem 1rem">
-          <p style="font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-bottom:.45rem;font-weight:700">Solana / USDC (Solana)</p>
-          <code style="font-size:.74rem;word-break:break-all;color:#ffd189;display:block;background:rgba(0,0,0,.3);padding:.5rem .65rem;border-radius:8px;user-select:all">6VXmnP1iXkKbSdp7uEvpjZbuERD9hupvT2YbtPQeZdT4</code>
-        </div>
-      </div>
-      <p style="margin-top:1rem;font-size:.75rem;color:var(--text3);line-height:1.75">After sending, email <a href="mailto:orders@titanpeptidelab.com" style="color:var(--teal);font-weight:600">orders@titanpeptidelab.com</a> with your order ID <strong style="color:#fff">${orderRef}</strong> and the transaction hash. Your order ships once payment is confirmed — usually same business day.</p>
-    `;
-  }
-
   orderSuccess.classList.add("show");
   cart = [];
   appliedDiscount = null;
